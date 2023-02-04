@@ -1,4 +1,8 @@
-import Head from 'next/head'
+import Header from '@/components/landing/Header'
+import Hero from '@/components/landing/Hero'
+import  Head  from 'next/head'
+import Features from '@/components/landing/Features'
+
 
 
 
@@ -13,7 +17,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
+       <Header />
+       <Hero />
        
+       <Features />
       </main>
     </>
   )
