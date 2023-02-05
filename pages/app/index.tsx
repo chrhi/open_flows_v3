@@ -1,11 +1,14 @@
 import React from 'react'
 import Header from '@/components/shared/Header'
+import PageLayout from '@/components/shared/PageLayout'
 
 function index() {
   return (
     <>
     <Header />
-    <h1>this is the homepage</h1>
+    <PageLayout>
+      
+    </PageLayout>
     </>
   )
 }

@@ -1,46 +1,44 @@
-
 import Link from 'next/link'
 import React from 'react'
-import { Avatar, Button, IconButton } from '@mui/material'
+import {  Button } from '@mui/material'
 import DropDowsAvatar from "./DropDowsAvatar"
+import { useCurrentPage } from '@/global/useCurrentPage'
+import { useRouter } from 'next/router'
 
-const links = [
-    {
-        name : "Dashboard",
-        link:"/app",
-        selected:false,
-    },
-    {
-        name : "flows",
-        link:"/app/flows",
-        selected:true,
-    },
-  
-]
 
-const NavLink = (link :string , name :string , selected : boolean) => (
-  
-<Button variant="text"  className={`  ${selected ? "text-black": "text-gray-600" } hover:text-gray-900 ${selected ? "font-bold": null }`}>
-<Link href={link}> {name} </Link>
-</Button>
-)
+
 
 
 
 function Header() {
 
+  const currentPage = useCurrentPage(state => state?.currentPage)
+  const moveToDashbored = useCurrentPage(state => state?.moveToDashBored)
+  const moveToFlows = useCurrentPage(state => state?.moveToFlows)
+
+  const router = useRouter()
+
+  const handleDashBored = () => {
+    router.push("/app")
+    moveToDashbored()
+  }
+  const handleFlows = () => {
+    router.push("/app/flows")
+    moveToFlows()
+  }
+
   return (
     <div className='w-full h-[55px] flex justify-between p-2 px-4 items-center shadow-sm'>
       <div className='w-1/2 h-full flex justify-start items-center '>
-      <h1 className='text-blue-600 text-xl font-bold cursor-pointer hover:text-blue-700 '>Open Flows</h1>  
+      <h1 className='text-blue-600 text-2xl font-bold cursor-pointer hover:text-blue-700 '>OpenFlows</h1>  
       <div className='w-fit flex gap-x-6 items-center ml-6 '>
-      {/* {
-        links.map((item) => <Link href={item.link} className={`text-lg  ${item.selected ? "text-black": "text-gray-600" } hover:text-gray-900 ${item.selected ? "font-bold": null }`}> {item.name} </Link>  )
-      } */}
-
-      {
-        links.map((item) => NavLink(item.link , item.name , item.selected) )
-      }
+      
+      <Button variant="text" onClick={handleDashBored} className={`  ${currentPage === "dashboard" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPage === "dashboard"? "font-bold": null }`}>
+       Dashboard 
+      </Button>
+      <Button variant="text" onClick={handleFlows}  className={`  ${currentPage === "flows" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPage === "flows"? "font-bold": null }`}>
+      Flows
+      </Button>
       </div>
       </div>
       <div className='w-1/2 h-full flex justify-end '>

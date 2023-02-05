@@ -10,7 +10,7 @@ function DropDowsAvatar() {
     <div className="fixed text-right z-[100]">
     <Menu as="div" className="relative z-[100]  inline-block text-left">
       <div>
-      
+      <SettingsIcon />
       </div>
       <Transition
         as={Fragment}
