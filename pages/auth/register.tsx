@@ -1,13 +1,31 @@
-import React from 'react'
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Button} from '@mui/material'
+//import related to the auth 
+import {createNewAccount} from "@/services/auth/provider"
 
 const stype = {
   input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
 }
 
 function index() {
+
+  // const [email , setEmail] = useState<string>()
+  // const [password , setPassword] = useState<string>()
+
+  // const handleSubmit = async () => {
+  //   if(!email || !password) return 
+
+  //   await createNewAccount(email , password)
+
+  // }
+
+
+
+// onClick={handleSubmit}
+//onChange={(e) => setEmail(e.target.value) } 
+//onChange={(e) => setPassword(e.target.value) } 
+
   return (
    <div className='w-full h-screen  bg-gradient-to-r from-sky-500 to-indigo-600 flex justify-center items-center'>
 
@@ -22,11 +40,14 @@ function index() {
       <label className='my-2'>user name</label>
       <input type="text" className={stype.input}  />
       <label  className='my-2'>your password</label>
-      <input type="password"   className={stype.input} />
+      <input type="password"   className={stype.input}  />
       <label  className='my-2'>confirmed password</label>
       <input type="password"   className={stype.input} />
       <div className='w-full mt-3 mb-1 flex justify-center items-center h-[70px]'>
-      <Button variant="contained"  className="rounded !w-[70%]  !text-lg bg-gradient-to-r from-sky-500 to-indigo-600" >
+      <Button 
+    
+      variant="contained"  
+      className="rounded !w-[70%]  !text-lg bg-gradient-to-r from-sky-500 to-indigo-600" >
         submit my account
       </Button>
       </div>
