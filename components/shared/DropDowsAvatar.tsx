@@ -32,7 +32,7 @@ function DropDowsAvatar() {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute z-[100] right-0 mt-2 w-[280px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="px-1 py-1 ">
+          <div className="px-1 py-1  z-[100] ">
           <Menu.Item >
               {({ active }) => (
               <div className ="w-full h-[80px] flex border-b border-gray-300 cursor-pointer hover:bg-gray-50" onClick={() => router.push("/app/user")}>

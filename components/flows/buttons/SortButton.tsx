@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material'
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import SortIcon from '@mui/icons-material/Sort';
 import { Menu, Transition } from '@headlessui/react'
 
 
@@ -17,14 +17,13 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function FilterButton() {
+export default function SortButton() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-      <Button variant="outlined"
-       className ="!bg-white  !px-3 !py-2  !text-black !rounded-lg !font-bold !border-gray-300"
-       startIcon={<FilterAltIcon />}
-       >filter</Button>
+      <Button variant="outlined" 
+       startIcon={<SortIcon />}
+       className ="!bg-white  !px-3 !py-2  !text-black !rounded-lg !font-bold !border-gray-300">sort by</Button>
       </div>
 
       <Transition
@@ -141,6 +140,5 @@ export default function FilterButton() {
     </Menu>
   )
 }
-
 
 
