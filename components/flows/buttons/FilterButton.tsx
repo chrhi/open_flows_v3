@@ -21,10 +21,12 @@ export default function FilterButton() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-      <Button variant="outlined"
-       className ="!bg-white  !px-3 !py-2  !text-black !rounded-lg !font-bold !border-gray-300"
-       startIcon={<FilterAltIcon />}
-       >filter</Button>
+      <Menu.Button className="inline-flex  gap-x-2 font-bold  w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+      <FilterAltIcon />
+          filter
+         
+        </Menu.Button>
+    
       </div>
 
       <Transition

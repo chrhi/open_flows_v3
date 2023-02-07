@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from "next/image"
-import { Avatar, IconButton } from '@mui/material'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings';

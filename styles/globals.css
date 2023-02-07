@@ -1,10 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,100;0,600;0,700;0,800;0,900;1,900&family=Qwitcher+Grypen:wght@700&family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,100;0,500;0,600;0,700;0,800;0,900;1,900&family=Qwitcher+Grypen:wght@700&family=Rubik:wght@500&display=swap');
 
 *{
     font-family: 'Poppins', sans-serif;
+}
+
+html{
+    scrollbar-width: 5px;
+    scrollbar-color: #777 #555;
+}
+
+html::-webkit-scrollbar {
+    width: 7px;
+    
+}
+html::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 50%;
+}
+html::-webkit-scrollbar-track {
+    background-color: #777;
 }
 
 
@@ -17,3 +34,23 @@
     /* min-height: calc(100vh - 55px); */
     min-height: calc(100vh);
 }
+.custom-shape-divider-bottom-1675776926 {
+   
+   
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1675776926 svg {
+    position: relative;
+    display: block;
+    width: calc(137% + 1.3px);
+    height: 186px;
+}
+
+.custom-shape-divider-bottom-1675776926 .shape-fill {
+    fill: white;
+}
+

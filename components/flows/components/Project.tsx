@@ -1,4 +1,5 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
+
 
 
 type ProjectType = {
@@ -6,18 +7,18 @@ type ProjectType = {
   type:string ,
   description:string,
   progress:string ,
-  image:string
+  image:string | StaticImageData
 }
 
 function Project({title , type , description , progress , image}:ProjectType) {
   return (
     <div className='w-[320px] h-[300px]
-     rounded-xl bg-white cursor-pointer
+     rounded-xl bg-white cursor-pointer shadow-sm
      hover:shadow-2xl  transition delay-75 
      flex flex-col gap-y-1
       '>
     <div className='w-full h-[100px]  flex items-center p-4 gap-x-2  '>
-    <div className='w-[85px] h-[85px]'>
+    <div className='w-[70px] h-[70px] rounded-full overflow-hidden'>
       <Image src={image} alt={"project pic"} />
     </div>
     <div className='w-[60%] h-[100px] flex flex-col  items-start p-4 justify-between  '>

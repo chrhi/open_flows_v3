@@ -21,9 +21,12 @@ export default function SortButton() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-      <Button variant="outlined" 
-       startIcon={<SortIcon />}
-       className ="!bg-white  !px-3 !py-2  !text-black !rounded-lg !font-bold !border-gray-300">sort by</Button>
+      <Menu.Button className="inline-flex w-full font-bold gap-x-2 justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+      <SortIcon />
+         sort by
+       
+        </Menu.Button>
+     
       </div>
 
       <Transition
