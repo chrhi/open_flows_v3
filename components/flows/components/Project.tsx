@@ -12,13 +12,13 @@ type ProjectType = {
 
 function Project({title , type , description , progress , image}:ProjectType) {
   return (
-    <div className='w-[320px] h-[300px]
+    <div className='2xl:w-[340px] 2xl:h-[320px] lg:w-[300px] lg:h-[280px]
      rounded-xl bg-white cursor-pointer shadow-sm
-     hover:shadow-2xl  transition delay-75 
-     flex flex-col gap-y-1
+     hover:shadow-2xl    transition duration-500 transform hover:-translate-y-1
+     flex flex-col gap-y-1 z-0
       '>
     <div className='w-full h-[100px]  flex items-center p-4 gap-x-2  '>
-    <div className='w-[70px] h-[70px] rounded-full overflow-hidden'>
+    <div className='w-[60px] h-[60px] rounded-full overflow-hidden'>
       <Image src={image} alt={"project pic"} />
     </div>
     <div className='w-[60%] h-[100px] flex flex-col  items-start p-4 justify-between  '>
@@ -33,9 +33,9 @@ function Project({title , type , description , progress , image}:ProjectType) {
     <div className='w-full h-[83px] flex flex-col items-center justify-between  py-2 '>
    
    {/* this will starts  */}
-    <div className="w-[90%] bg-gray-200 rounded-full h-2.5 ">
+    <div className="w-[90%] bg-gray-200 rounded-full h-[5px] ">
      
-     <div className={`bg-blue-600 h-2.5 rounded-full w-[${progress}%]`}></div>
+     <div className={`bg-blue-600 h-[5px] rounded-full w-[${progress}%]`}></div>
    </div>
    {/* this end with this  */}
    
