@@ -1,8 +1,13 @@
 import Image, { StaticImageData } from "next/image"
+import {motion} from "framer-motion"
+import { useRouter } from "next/router"
+import { Key } from "react"
+
 
 
 
 type ProjectType = {
+  id:Key | null | undefined ,
   title:string ,
   type:string ,
   description:string,
@@ -10,14 +15,23 @@ type ProjectType = {
   image:string | StaticImageData
 }
 
-function Project({title , type , description , progress , image}:ProjectType) {
+function Project({title , type , description , progress , image , id}:ProjectType) {
+
+  const router = useRouter()
+
   return (
-    <div className='2xl:w-[340px] 2xl:h-[320px] lg:w-[300px] lg:h-[280px]
+    <motion.div 
+     onClick={() => router.push(`/app/flows/${id}`)}
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration:0.3}}
+     className='2xl:w-[340px] 2xl:h-[320px] lg:w-[300px] lg:h-[280px]
      rounded-xl bg-white cursor-pointer shadow-sm
      hover:shadow-2xl    transition duration-500 transform hover:-translate-y-1
      flex flex-col gap-y-1 z-0
       '>
-    <div className='w-full h-[100px]  flex items-center p-4 gap-x-2  '>
+    <div className='w-full h-[100px]  flex items-center p-4 gap-x-2  z-0 '>
     <div className='w-[60px] h-[60px] rounded-full overflow-hidden'>
       <Image src={image} alt={"project pic"} />
     </div>
@@ -27,7 +41,7 @@ function Project({title , type , description , progress , image}:ProjectType) {
     </div>
     </div>
 
-    <div className='w-full h-[100px]  '>
+    <div className='w-full h-[100px]  z-0 '>
     <p className=' text-sm leading-8 text-gray-600 text-start px-3'> {description} </p>
     </div>
     <div className='w-full h-[83px] flex flex-col items-center justify-between  py-2 '>
@@ -48,7 +62,7 @@ function Project({title , type , description , progress , image}:ProjectType) {
     </div>
    
         
-    </div>
+    </motion.div>
   )
 }
 

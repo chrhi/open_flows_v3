@@ -3,17 +3,17 @@ import LayoutButton from '../buttons/LayoutButton';
 import FilterButton from "../buttons/FilterButton"
 import SortButton from '../buttons/SortButton';
 import { Button } from '@mui/material';
-import { useFlows } from '@/global/useFlows';
+import { useFlows } from '@/context/useFlows';
 import { NextRouter, useRouter } from 'next/router';
 
 
 function PageHead() {
   const router:NextRouter = useRouter()
-  const yes = useFlows(state => state.yes)
+  
   return (
-    <div className='w-full h-[80px] z-0 flex justify-between pl-12  items-center  px-4'>
+    <div className='w-full h-[80px]  flex justify-between pl-12  items-center  px-4'>
         <h1 className='text-3xl   '>Flows </h1>
-        <div className='h-full w-[60%] z-0 flex gap-x-4 justify-end pl-4 items-center '>
+        <div className='h-full w-[60%] !z-[10] flex gap-x-4 justify-end pl-4   items-center '>
         <LayoutButton />
         <FilterButton />
         <SortButton />

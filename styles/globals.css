@@ -7,6 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 html{
     scrollbar-width: 5px;
     scrollbar-color: #777 #555;
@@ -30,9 +31,19 @@ html::-webkit-scrollbar-track {
     height: calc(100vh - 70px);
 }
 
+.sideBarH{
+    height: calc(100vh - 70px);
+}
+
 .bodyOfApp{
     /* min-height: calc(100vh - 55px); */
-    min-height: calc(100vh);
+    min-height: 100vh;
+}
+.paper{
+    height: calc(100vh - 50px);
+}
+.heightAbdullah{
+    height: calc(100vh - 50px);
 }
 .custom-shape-divider-bottom-1675776926 {
    
@@ -53,4 +64,5 @@ html::-webkit-scrollbar-track {
 .custom-shape-divider-bottom-1675776926 .shape-fill {
     fill: white;
 }
+
 

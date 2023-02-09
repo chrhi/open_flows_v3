@@ -8,6 +8,7 @@ export const useCurrentPage = create(
     (set, get) => ({
       currentPage: "dashboard",
       moveToFlows: () => set({currentPage:"flows"}),
+      moveToInvoices:() => set({currentPage:"invoices"}),
      moveToDashBored: () => set({currentPage:"dashboard"}),
      //@ts-ignore
      getCurrentPage : () => get().currentPage 

@@ -1,4 +1,4 @@
-import { useFlows } from '@/global/useFlows'
+import { useFlows } from '@/context/useFlows'
 import NewProject from '@/components/flows/pages/NewProject';
 import Projects from '@/components/flows/pages/Projects';
 
