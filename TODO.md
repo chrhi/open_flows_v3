@@ -23,3 +23,9 @@
 4- integrate prayers api with python 
 5- create the setting page and make it working 
 6- make 404 and error pages and loading pages and different promotions models 
+
+# supabase
+1- connection with database 
+2- fonctionality to create project 
+3 - fonctionality to store pdf
+4- fcontionality to store pdf 
