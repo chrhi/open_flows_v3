@@ -1,3 +1,5 @@
+type ID = string | number
+
 export type Flow = {
     id: number | string ,
     image :string , 
@@ -10,7 +12,19 @@ export type Flow = {
     creator: number | string ,
 }
 
+
+
 export type Account = {
 
+}
+
+export type User = {
+    username : string,
+    email: string,
+    photoURL:string,
+    user_id:ID,
+    work_spaces: [ID]
+    team :[ID] | null,
+    settings : ID | null
 }
 

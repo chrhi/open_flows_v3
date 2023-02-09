@@ -5,6 +5,7 @@ import { Button} from '@mui/material'
 import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
+import { useUser } from '@/context/useUser';
 //this is for testting 
 
 
@@ -21,8 +22,9 @@ function Login() {
 
   //handelling the routing
   const router = useRouter()
-
-
+  //@ts-ignore
+  const setUser = useUser(state => state.setUser)
+  
 
 
 
@@ -30,13 +32,15 @@ function Login() {
   const [password , setPassword] = useState<string>()
 
   const handleSubmit = () => {
-    console.log(email , password)
+   
     if(!email || !password){
       console.error("password or email is undefined")
       return
     }
-    singInWithEmailAndPassword(email , password).then(() => {
-      console.log("this message is after the sig9ing up ")
+    singInWithEmailAndPassword(email , password).then( async () => {
+      
+      
+    await setUser()
    
       router.push("/app")
     }).catch((err) => console.error(err))

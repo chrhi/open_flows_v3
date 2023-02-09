@@ -1,16 +1,23 @@
 import React from 'react'
 import Image from "next/image"
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from 'next/router'
 import { logout } from '@/services/auth/provider'
-import Salah from "@/images/salah.jpg"
+import { useUser } from '@/context/useUser';
 
+type Prop ={
+  User :any | undefined
+}
 
-function DropDowsAvatar() {
+function DropDowsAvatar({User}:Prop) {
+  //@ts-ignore
+  const user = useUser(state => state.user)
 
   const router = useRouter()
+
+  
 
   return (
     <div className="fixed text-right z-[100]">
@@ -36,13 +43,13 @@ function DropDowsAvatar() {
               {({ active }) => (
               <div className ="w-full h-[80px] flex border-b border-gray-300 cursor-pointer hover:bg-gray-50" onClick={() => router.push("/app/user")}>
                 <div className='w-[30%] flex justify-center items-center'>
-                <Image src={Salah} className='rounded-full w-[60px] h-[60px]' alt ={""} />
+                <Image src={User?.photo} className='rounded-full w-[60px] h-[60px]' alt ={""} />
                 </div>
                 <div className='w-[30%] flex flex-col justify-center '>
                 
-               <h1 className='text-lg   '> salah </h1>
-               
-               <p>salahsvc45@gmail.com</p>
+               <h1 className='text-lg   '> {user?.username || "nick name"}</h1>
+             
+               <p>{User?  User?.email : null }</p>
                 </div>
 
               </div>

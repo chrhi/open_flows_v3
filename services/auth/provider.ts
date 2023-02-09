@@ -1,4 +1,6 @@
 import {supabase} from '@/config/supabase'
+import {setCookieAuth , removeCookie} from "./useCookie"
+import { useUser } from '@/context/useUser'
 
 export const createUserWithEmailAndPassword = async (email:string , password:string ) => {
   let { data, error } = await supabase.auth.signUp({
@@ -23,7 +25,15 @@ export const singInWithEmailAndPassword  = async (email:string , password:string
     console.error("error" + error)
     return
   }
-  console.log(data)
+  //if we have a user then set the cookie
+  if(data?.session){
+  setCookieAuth(data?.session?.access_token)
+    return data.user
+  // setUser({
+   
+  // })
+
+  }
 
 }
 
@@ -34,6 +44,7 @@ if(error){
   console.error(error)
   return
 }
+removeCookie()
 }
 
 

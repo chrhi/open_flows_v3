@@ -3,6 +3,8 @@ import {  Button } from '@mui/material'
 import DropDowsAvatar from "./DropDowsAvatar"
 import { useCurrentPage } from '@/context/useCurrentPage'
 import { useRouter } from 'next/router'
+import { supabase } from '@/config/supabase'
+
 
 
 
@@ -23,6 +25,25 @@ function Header() {
   
 
   const router = useRouter()
+
+  const [currentUser , setCurrentUser] = useState<any>();
+  
+  useEffect( ()=>{
+    async  function getUserData (){
+      const { data: { user } } = await supabase.auth.getUser()
+      
+    return user
+    } 
+    getUserData().then(data =>{
+      setCurrentUser(data)
+    }).catch(err => console.error(err))
+   
+  },[])
+
+
+
+
+
 
   const handleDashBored = () => {
     router.push("/app")
@@ -65,7 +86,7 @@ function Header() {
       </div>
       </div>
       <div className='w-1/2 h-full flex justify-end items-center '>
-    <DropDowsAvatar />
+    <DropDowsAvatar User ={currentUser} />
       </div>
     </div>
   )
