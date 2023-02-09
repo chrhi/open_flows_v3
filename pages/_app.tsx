@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-    <NextNProgress />
+    <NextNProgress options={{ showSpinner: false }} />
     
     <Component {...pageProps} />
     </>
