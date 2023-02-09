@@ -5,6 +5,8 @@ import { Button} from '@mui/material'
 import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
+//this is for testting 
+
 
 
 const stype = {
@@ -14,8 +16,15 @@ const stype = {
 
 function Login() {
 
+
+ 
+
   //handelling the routing
   const router = useRouter()
+
+
+
+
 
   const [email , setEmail] = useState<string>()
   const [password , setPassword] = useState<string>()
@@ -27,8 +36,11 @@ function Login() {
       return
     }
     singInWithEmailAndPassword(email , password).then(() => {
+      console.log("this message is after the sig9ing up ")
+   
       router.push("/app")
     }).catch((err) => console.error(err))
+    
   }
 
   return (

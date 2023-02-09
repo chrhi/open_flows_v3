@@ -11,7 +11,7 @@ const stype = {
   //to do handle redirect users to confirmed thier email
   
 
-function register() {
+function Register() {
   //graphing the data
   const [password , setPassword] = useState<string>()
   const[confirmedPassword , setConfirmedPassword] = useState<string>()
@@ -85,4 +85,4 @@ function register() {
   )
 }
 
-export default register
+export default Register

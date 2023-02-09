@@ -5,19 +5,21 @@ import SquareLayout from "../layouts/SquareLayout"
 import Project from '../components/Project'
 import {Flows} from "@/context/Flows"
 
+
 import salah from "@/images/salah.jpg"
 
 
-const domyData = [1]
+
 
 function Projects() {
     //@ts-ignore
     const data = Flows(state => state?.flows)
    //@ts-ignore
     const setFlows = Flows(state => state?.setFlows)
-    useEffect(() => {
-      setFlows(domyData)
-    },[])
+
+
+    console.log("this is from the flow compoennet")
+  
 
    
   return (
