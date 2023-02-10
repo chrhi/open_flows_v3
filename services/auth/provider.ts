@@ -12,8 +12,7 @@ export const createUserWithEmailAndPassword = async (email:string , password:str
     console.error(error)
     return
   }
-  console.log("every thing went good")
-  console.log(data)
+ return data.user
 }
 
 export const singInWithEmailAndPassword  = async (email:string , password:string) => {

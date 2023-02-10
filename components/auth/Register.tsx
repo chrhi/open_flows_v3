@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword } from '@/services/auth/provider';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Button} from '@mui/material'
+import { useRouter } from 'next/router';
+import {useUser} from "@/context/useUser"
 
 const stype = {
     input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
@@ -17,6 +19,15 @@ function Register() {
   const[confirmedPassword , setConfirmedPassword] = useState<string>()
   const [email , setEmail] = useState<string>()
 
+  //getting the router object
+  const router = useRouter()
+
+  //getting the user data and function to set it up
+  //@ts-ignore 
+  const set_user = useUser(state => state?.setUser)
+
+
+
   const handleSubmit = () => {
     if(!email || !password){
       console.error("email or password is undefined")
@@ -28,7 +39,9 @@ function Register() {
     }
 
     createUserWithEmailAndPassword(email , password).then((res => {
-      console.log("succuss")
+      
+      set_user(res?.id)
+      router.push("/auth/moreDetails")
     })).catch(err => console.error(err))
 
     

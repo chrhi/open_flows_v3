@@ -1,6 +1,9 @@
 import { LoadingButton } from '@mui/lab'
-import Button from '@mui/material/Button'
-import React , {useState} from 'react'
+import { create_profile } from '@/services/db/users'
+import { create_workspace } from '@/services/db/workspace'
+
+import { useUser } from '@/context/useUser'
+import {useState} from 'react'
 
 export default function AcountDetails() {
 
@@ -8,16 +11,36 @@ export default function AcountDetails() {
         input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
       }
       const [isLoading , setIsLoading] = useState<boolean>(false)
+      //getting the user id from the register form 
+      //@ts-ignore
+      const user = useUser(state => state.user_id)
 
     //graphing the data
     const [first_name , set_fist_name] = useState<string>()
     const[last_name , set_last_name] = useState<string>()
     const [work_space , set_work_space] = useState<string>()
     const [photo_url , set_photo_url] = useState<string>()
-  
-    const handleSubmit = () => {
-     console.log(first_name , last_name , work_space , photo_url)
+      
+
+    //this function will handle the submit event
+    const handleSubmit = async () => {
+  //  if there is no data then we should return
+     if(!first_name || !last_name || !photo_url || !work_space) return
      setIsLoading(prev => prev = !prev)
+     
+     if(!user){
+      console.error("there is no user")
+      return
+     }
+     console.log("this is the user " + user)
+     const data = await create_profile(user ,first_name , last_name , photo_url).catch(err => console.error(err))
+     const succuss = await create_workspace(user , work_space).catch(err => console.error(err))
+     
+     setIsLoading(prev => prev = !prev)
+     //console.log(data, succuss)
+     console.log(data)
+
+
       
     }
   
