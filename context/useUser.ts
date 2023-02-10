@@ -11,6 +11,8 @@ export const useUser = create(
   persist(
     (set) => ({
       user_id: "",
+   
+      
       setUser: async ( user_id:string | number) => {
        
         set({user_id })

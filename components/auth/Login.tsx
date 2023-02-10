@@ -6,6 +6,10 @@ import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
 import { useUser } from '@/context/useUser';
+import { useStatus } from '@/context/app_status'
+
+import { ID } from '@/static/types';
+import { get_user_profile } from '@/services/db/users';
 //this is for testting 
 
 
@@ -24,6 +28,11 @@ function Login() {
   const router = useRouter()
   //@ts-ignore
   const setUser = useUser(state => state.setUser)
+
+   //@ts-ignore
+    const set_user_photo = useStatus(state => state?.set_user_photo)
+     //@ts-ignore
+     const set_user_email = useStatus(state => state?.set_user_email)
   
 
   const [isLoading , setIsLoading] = useState<boolean>(false)
@@ -39,10 +48,21 @@ function Login() {
       setIsLoading(false)
       return
     }
-    singInWithEmailAndPassword(email , password).then( async () => {
+    singInWithEmailAndPassword(email , password).then(  (user) => {
+
+      get_user_profile(user?.id as ID).then((credentials)=>{
+        if(!credentials) return
+        const photo_url = credentials[0]?.photo_url 
+        const name = credentials[0]?.first_name
+ 
+     set_user_photo(photo_url)
+     set_user_email(user?.email as string)
+
+      })
       
       
-    await setUser()
+    
+      
    
       router.push("/app")
       setIsLoading(false)

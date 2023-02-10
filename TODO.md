@@ -29,3 +29,7 @@
 2- fonctionality to create project 
 3 - fonctionality to store pdf
 4- fcontionality to store pdf 
+
+fuunction to insert projects 
+
+function to get all the project related to a work space

@@ -1,12 +1,14 @@
 import {supabase} from '@/config/supabase'
+import { ID } from '@/static/types'
 
 
 
-export const get_users =  async () => {
+export const get_user_profile =  async (user_id : ID) => {
 // READ ALL ROWS
 let { data: profiles, error } = await supabase
   .from('profiles')
   .select('*')
+  .eq("id", user_id)
 if(error){
     console.error(error)
     return

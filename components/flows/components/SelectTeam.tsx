@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { handle_add_flow } from '@/context/handle_add_flow';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -32,6 +33,10 @@ const names = [
 ];
 
 export default function MultipleSelectCheckmarks() {
+  //@ts-ignore
+  const set_members = handle_add_flow(state => state.set_members)
+
+
   const [personName, setPersonName] = React.useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof personName>) => {
@@ -42,6 +47,8 @@ export default function MultipleSelectCheckmarks() {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    console.log(personName)
+    set_members(personName)
   };
 
   return (

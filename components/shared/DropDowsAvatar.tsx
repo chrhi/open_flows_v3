@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from 'next/router'
 import { logout } from '@/services/auth/provider'
-import { useUser } from '@/context/useUser';
+import { useStatus } from '@/context/app_status'
 
 
 type Prop ={
@@ -13,8 +13,13 @@ type Prop ={
 }
 
 function DropDowsAvatar({User}:Prop) {
-  //@ts-ignore
-  const user = useUser(state => state.user)
+ 
+   //@ts-ignore
+    const current_user_photo_url = useStatus(state => state?.current_user_photo_url)
+    //@ts-ignore
+   const current_user_email = useStatus(state => state?.current_user_email)
+
+  
 
   const router = useRouter()
 
@@ -44,13 +49,17 @@ function DropDowsAvatar({User}:Prop) {
               {({ active }) => (
               <div className ="w-full h-[80px] flex border-b border-gray-300 cursor-pointer hover:bg-gray-50" onClick={() => router.push("/app/user")}>
                 <div className='w-[30%] flex justify-center items-center'>
-                <Image src={User?.photo} className='rounded-full w-[60px] h-[60px]' alt ={""} />
+                <Image src={""}
+                  alt="Picture of the current user"
+                  width={60}
+                  height={50}
+                className='rounded-full ' />
                 </div>
                 <div className='w-[30%] flex flex-col justify-center '>
                 
-               <h1 className='text-lg   '> {user?.username || "nick name"}</h1>
+               <h1 className='text-lg   '> { "nick name"}</h1>
              
-               <p>{User?  User?.email : null }</p>
+               <p>{current_user_email? current_user_email : null }</p>
                 </div>
 
               </div>
