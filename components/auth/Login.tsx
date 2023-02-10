@@ -1,7 +1,7 @@
 import React from 'react'
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import { Button} from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton';
 import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
@@ -26,15 +26,17 @@ function Login() {
   const setUser = useUser(state => state.setUser)
   
 
-
+  const [isLoading , setIsLoading] = useState<boolean>(false)
 
   const [email , setEmail] = useState<string>()
   const [password , setPassword] = useState<string>()
 
   const handleSubmit = () => {
-   
+    
+    setIsLoading(true)
     if(!email || !password){
       console.error("password or email is undefined")
+      setIsLoading(false)
       return
     }
     singInWithEmailAndPassword(email , password).then( async () => {
@@ -43,6 +45,7 @@ function Login() {
     await setUser()
    
       router.push("/app")
+      setIsLoading(false)
     }).catch((err) => console.error(err))
     
   }
@@ -75,12 +78,17 @@ function Login() {
       <label  className='my-2'>your password</label>
       <input type="password"   className={stype.input} onChange={(event) => setPassword(prev => prev = event.target.value)} />
       <div className='w-full my-3 flex justify-center items-center h-[70px]'>
-      <Button
     
-      onClick={handleSubmit}
-      variant="contained" className="rounded !w-[70%]  !text-lg bg-gradient-to-r from-sky-500 to-indigo-600" >
-        log in
-      </Button>
+      <LoadingButton
+      className="rounded !w-[70%]  !text-white !text-lg bg-gradient-to-r from-sky-500 to-indigo-600"
+     loading = {isLoading ? true : false}
+     loadingPosition="start"
+     onClick={handleSubmit}
+     variant="contained"
+ 
+     >
+     {isLoading ? "proceeding" :  "log in" }
+      </LoadingButton>
       </div>
 
 

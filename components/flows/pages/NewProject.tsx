@@ -1,5 +1,6 @@
 import { DateRangePicker } from 'react-date-range';
 import React, { useState } from 'react'
+import SelectTeam from "../components/SelectTeam"
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
@@ -50,28 +51,28 @@ function NewProject() {
     <textarea   placeholder='this is your description about the project' className={`${style.input } mt-1 h-[120px]`}/> 
   
       </div>
-      <div className='w-full min-h-[100px] h-fit flex justify-between p-4'>
-            <div className='h-full w-[50%] flex flex-col '>
+      <div className='w-full min-h-[100px] h-fit flex flex-col p-4'>
+            <div className='h-full w-[90%] flex flex-col '>
           <div>
         <h1 className='text-gray-400 text-md'>due to</h1>
         <p className='text-gray-700 text-lg'>When this project should be down </p>
         </div>
 
 
-        <div className=' my-4'>
+        <div className=' my-4 w-full flex justify-center '>
 
-        <DateRangePicker ranges={[selectionRange]} minDate={new Date()} onChange={handleSelect} />
+        <DateRangePicker  ranges={[selectionRange]} minDate={new Date()} onChange={handleSelect} />
         </div>
             </div>
 
 
  <div className='h-full flex flex-col'>
               <div>
-            <h1 className='text-gray-400 text-md'>brief</h1>
-             <p className='text-gray-700 text-lg'>Add a strong description </p>
+            <h1 className='text-gray-400 text-md'>members</h1>
+             <p className='text-gray-700 text-lg'>allow your team to have access to this project </p>
               </div>
         <div>
-         
+         <SelectTeam />
         </div>
               </div>
       
