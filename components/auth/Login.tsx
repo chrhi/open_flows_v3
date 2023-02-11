@@ -6,8 +6,6 @@ import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
 import { userReducer , app_statusReducer } from '@/store';
-import { ID } from '@/static/types';
-import { get_user_profile } from '@/services/db/users';
 import {style} from "@/static/tailwind"
 //this is for testting 
 
@@ -22,10 +20,7 @@ function Login() {
   //@ts-ignore
   const setUser = userReducer(state => state.setUser)
 
-   //@ts-ignore
-    const set_user_photo = app_statusReducer(state => state?.set_user_photo)
-     //@ts-ignore
-     const set_user_email = app_statusReducer(state => state?.set_user_email)
+  
   
 
   const [isLoading , setIsLoading] = useState<boolean>(false)
@@ -43,27 +38,10 @@ function Login() {
     }
     singInWithEmailAndPassword(email , password).then(  (user) => {
 
-      console.log("you sign in secssusfully")
-
-      get_user_profile(user?.id as ID).then((credentials)=>{
-        if(!credentials) return
-        const photo_url = credentials[0]?.photo_url 
-        const name = credentials[0]?.first_name
-
- 
-     set_user_photo(photo_url)
-     set_user_email(user?.email as string)
      router.push("/app")
      setIsLoading(false)
      window.location.reload()
 
-      })
-      
-      
-    
-      
-   
-     
       setIsLoading(false)
      console.log("not authorized")
     }).catch((err) => console.error(err))

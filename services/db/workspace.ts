@@ -14,5 +14,14 @@ export const create_workspace = async (owner:ID , name : string) => {
 }
 
 export const get_workspaces = async (user_id :ID) =>{
-  
+  let { data: workspaces, error } = await supabase
+  .from('workspaces')
+  .select('*')
+ .eq("owner", user_id)
+  if(error){
+    console.error(error)
+    return
+  }
+  return workspaces
 }
+

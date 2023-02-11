@@ -51,11 +51,11 @@ export default function DropDowsMenu() {
                   alt="Picture of the current user"
                   width={60}
                   height={50}
-                className='rounded-full ' />
+                className='rounded-full w-[60px] h-[60px] ' />
                 </div>
                 <div className='w-[30%] flex flex-col justify-center '>
                 
-               <h1 className='text-lg   '> { "nick name"}</h1>
+               <h1 className='text-lg   '>{user? user.name : null }</h1>
              
                <p>{user? user.email : null }</p>
                 </div>

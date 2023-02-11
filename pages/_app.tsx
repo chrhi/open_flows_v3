@@ -6,7 +6,8 @@ import {useEffect} from "react"
 import { supabase } from '@/config/supabase'
 import {userReducer} from "@/store"
 import { ID, User } from '@/static/types'
-
+import {get_user_profile} from "@/services/db/users"
+import {get_workspaces} from "@/services/db/workspace"
 
 
 
@@ -22,14 +23,24 @@ export default function App({ Component, pageProps }: AppProps) {
     //check if we have a user
    const response = await  supabase.auth.getSession().catch(error => console.error(error))
     if(response){
-     
-      const current_user :User ={ 
-        id: response.data.session?.user.id as ID,
-        email:  response.data.session?.user.email as string ,
-        photo_url: "A",
-        name:"A"
-      } 
-      setUser(current_user )
+      const profile = await get_user_profile(response.data.session?.user.id as ID) 
+      const workspaces = await get_workspaces(response.data.session?.user.id as ID)
+      console.log(workspaces)
+      if(profile && workspaces) {
+        const current_user :User ={ 
+          id: response.data.session?.user.id as ID,
+          email:  response.data.session?.user.email as string ,
+          photo_url:profile[0].photo_url,
+          name:profile[0].first_name,
+          workspaces
+        }
+        setUser(current_user )
+      }else {
+        // handle error display
+        console.log("continue the sign up process")
+      }
+      
+      
    
     }else{
       console.log("there is an error in the _app.ts file")
