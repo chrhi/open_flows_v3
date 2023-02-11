@@ -13,7 +13,7 @@ async function verify(token: string, secret: string): Promise<JWTPayload> {
 
 // This function can be marked `async` if using `await` inside
 export default async function middleware(req: NextRequest) {
-    const  auth = req.cookies.get('auth')?.value
+    const  auth = req.cookies.get('abdullah-access-token')?.value
 
   
 

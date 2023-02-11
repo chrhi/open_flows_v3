@@ -26,7 +26,7 @@ export const singInWithEmailAndPassword  = async (email:string , password:string
   }
   //if we have a user then set the cookie
   if(data?.session){
-  setCookieAuth(data?.session?.access_token)
+  
     return data.user
   // setUser({
    
@@ -39,11 +39,12 @@ export const singInWithEmailAndPassword  = async (email:string , password:string
 export const logout = async () => {
   
 let { error } = await supabase.auth.signOut()
+
 if(error){
   console.error(error)
   return
 }
-removeCookie()
+
 window?.location.reload()
 }
 
