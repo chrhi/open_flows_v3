@@ -18,15 +18,18 @@ export type Account = {
 
 }
 
-export type User = {
-    username : string,
-    email: string,
-    photoURL:string,
-    user_id:ID,
-    work_spaces: [ID]
-    team :[ID] | null,
-    settings : ID | null
-}
+
+
+export  type User = {
+    id:ID | undefined, 
+    email:string ,
+    photo_url : string , 
+    name:string,
+    workspaces?:[ID] | undefined ,
+    team? : [ID] | undefined
+   }
+
+
 //enums 
 enum Direction {
     Up = 1,

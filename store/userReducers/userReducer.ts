@@ -1,22 +1,41 @@
+import { ID } from '@/static/types'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
+import type { User } from '@/static/types'
+
+
+
+type userReducerType = {
+  user_id:ID , 
+  user:User,
+  setUser:(input :User) => void,
+  set_user_id :(input : ID ) =>  Promise<void>
+
+}
 
 
 
 
-
-
-
-export const userReducer = create(
+export const userReducer = create<userReducerType ,[["zustand/persist",unknown]]>(
   persist(
     (set) => ({
-      user_id: "",
-   
-      
-      setUser: async ( user_id:string | number) => {
-       
-        set({user_id })
+      user_id: "" as ID,
+      user:{
+        id:"" as ID, 
+        email:"" ,
+        photo_url : "" , 
+        name:"",
+        workspaces:undefined ,
+        team :  undefined
       },
+      
+      set_user_id: async ( input:ID) => {
+       
+        set({user_id : input })
+      },
+      setUser:  (input : User) =>{
+        set({user : input })
+      }
    
     }),
     {
@@ -25,3 +44,4 @@ export const userReducer = create(
     }
   )
 )
+//[],[["zustand/persist",unknown]]

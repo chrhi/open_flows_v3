@@ -2,10 +2,46 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import  Head  from 'next/head'
+import {useEffect} from "react"
+import { supabase } from '@/config/supabase'
+import {userReducer} from "@/store"
+import { ID, User } from '@/static/types'
+
 
 
 
 export default function App({ Component, pageProps }: AppProps) {
+
+  //getting the reducer from thr store
+  const setUser = userReducer(state => state.setUser)
+
+ 
+
+ useEffect(() => {
+  const user_credentials = async () => {
+    //check if we have a user
+   const response = await  supabase.auth.getSession().catch(error => console.error(error))
+    if(response){
+     
+      const current_user :User ={ 
+        id: response.data.session?.user.id as ID,
+        email:  response.data.session?.user.email as string ,
+        photo_url: "A",
+        name:"A"
+      } 
+      setUser(current_user )
+   
+    }else{
+      console.log("there is an error in the _app.ts file")
+    }
+
+  }
+  user_credentials().then(()=>{
+    console.log("every thing went good")
+  })
+  },[setUser])
+
+
   return(
     <>
      <Head>

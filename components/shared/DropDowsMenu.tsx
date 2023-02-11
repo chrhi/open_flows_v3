@@ -1,11 +1,11 @@
-import React from 'react'
 import Image from "next/image"
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from 'next/router'
 import { logout } from '@/services/auth/provider'
-import { app_statusReducer } from '@/store'
+import {userReducer} from "@/store"
+import { User } from '@/static/types';
 
 
 
@@ -13,16 +13,15 @@ import { app_statusReducer } from '@/store'
 
 export default function DropDowsMenu() {
  
-   //@ts-ignore
-    const current_user_photo_url = app_statusReducer(state => state?.current_user_photo_url)
-    //@ts-ignore
-   const current_user_email = app_statusReducer(state => state?.current_user_email)
+  //initializes hooks
+   const router = useRouter()
+   const user:User = userReducer(state => state.user)
 
   
 
-  const router = useRouter()
 
-  
+
+
 
   return (
     <div className="fixed text-right z-[100]">
@@ -58,7 +57,7 @@ export default function DropDowsMenu() {
                 
                <h1 className='text-lg   '> { "nick name"}</h1>
              
-               <p>{current_user_email? current_user_email : null }</p>
+               <p>{user? user.email : null }</p>
                 </div>
 
               </div>
