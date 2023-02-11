@@ -3,15 +3,16 @@ import React, { useState } from 'react'
 import MultipleSelectCheckmarks from "../components/MultipleSelectCheckmarks"
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import {addFlowReducer} from "@/store"
+import {addFlowReducer , userReducer} from "@/store"
+import {create_flow} from "@/services/db/flow"
+import { style} from "@/static/tailwind"
+import { ID } from '@/static/types';
 
-
-
-const style = {
-    input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-  }
 
 function NewProject() {
+
+  const {user} = userReducer()
+
 
   const [startDate , setStartDate] = useState(new Date())
   const [endDate , setEndDate] = useState(new Date())
@@ -41,7 +42,7 @@ function NewProject() {
     key: 'selection',
   }
 
-  const handle_submit = () => {
+  const handle_submit = async () => {
     set_data({
       title,
       brief,
@@ -49,6 +50,19 @@ function NewProject() {
       starts_at:startDate,
       ends_at:endDate
     })
+    if(!user?.workspaces) return
+   await  create_flow(
+    user.workspaces[0]?.id as ID ,
+    title as string ,
+    brief as string,
+    false ,
+    emoji as string,
+    startDate.toDateString() ,
+    endDate.toDateString() ,
+    [user.id as ID]
+   ).catch(error => {
+    console.error(error)
+   })
   }
 
 
