@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
 
-export const useStatus = create(
+export const app_statusReducer = create(
   persist(
     (set) => ({
       is_error: false ,

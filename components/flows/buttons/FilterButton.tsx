@@ -1,26 +1,13 @@
-import React from 'react'
-import { Button } from '@mui/material'
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { Menu, Transition } from '@headlessui/react'
-import {Flows} from "@/context/Flows"
-
-
-
-
-
-
-
 import { Fragment } from 'react'
-
-
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function FilterButton() {
-  //@ts-ignore
-  const filter = Flows(state => state?.filterFlows)
+  
 
   return (
     <Menu as="div" className="relative inline-block !z-[300] text-left">
@@ -52,8 +39,7 @@ export default function FilterButton() {
           >
               {({ active }) => (
                 <button
-                onClick={filter}
-                  
+                
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'

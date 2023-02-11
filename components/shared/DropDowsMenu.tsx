@@ -5,19 +5,18 @@ import { Fragment } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from 'next/router'
 import { logout } from '@/services/auth/provider'
-import { useStatus } from '@/context/app_status'
+import { app_statusReducer } from '@/store'
 
 
-type Prop ={
-  User :any | undefined
-}
 
-function DropDowsAvatar({User}:Prop) {
+
+
+export default function DropDowsMenu() {
  
    //@ts-ignore
-    const current_user_photo_url = useStatus(state => state?.current_user_photo_url)
+    const current_user_photo_url = app_statusReducer(state => state?.current_user_photo_url)
     //@ts-ignore
-   const current_user_email = useStatus(state => state?.current_user_email)
+   const current_user_email = app_statusReducer(state => state?.current_user_email)
 
   
 
@@ -114,6 +113,4 @@ function DropDowsAvatar({User}:Prop) {
     </Menu>
     </div>
   )
-}
-
-export default DropDowsAvatar
+                }

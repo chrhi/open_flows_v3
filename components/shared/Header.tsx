@@ -1,9 +1,9 @@
 import {useEffect , useState} from 'react'
 import {  Button } from '@mui/material'
-import DropDowsAvatar from "./DropDowsAvatar"
-import { useCurrentPage } from '@/context/useCurrentPage'
+import DropDowsMenu from "./DropDowsMenu"
+import { currentPageReducer } from '@/store'
 import { useRouter } from 'next/router'
-import { supabase } from '@/config/supabase'
+
 
 
 
@@ -13,37 +13,18 @@ import { supabase } from '@/config/supabase'
 
 function Header() {
        //@ts-ignore
-  const moveToInvoices = useCurrentPage(state => state?.moveToInvoices)
+  const moveToInvoices = currentPageReducer(state => state?.moveToInvoices)
        //@ts-ignore
-  const moveToDashbored = useCurrentPage(state => state?.moveToDashBored)
+  const moveToDashbored = currentPageReducer(state => state?.moveToDashBored)
        //@ts-ignore
-  const moveToFlows = useCurrentPage(state => state?.moveToFlows)
+  const moveToFlows = currentPageReducer(state => state?.moveToFlows)
   //@ts-ignore
-  const currentPage = useCurrentPage(state => state?.currentPage)
+  const currentPage = currentPageReducer(state => state?.currentPage)
   //this is a state 
   const [currentPageSelected , setCurrentPageSelected] = useState<string>()
   
 
   const router = useRouter()
-
-  const [currentUser , setCurrentUser] = useState<any>();
-  
-  useEffect( ()=>{
-    async  function getUserData (){
-      const { data: { user } } = await supabase.auth.getUser()
-      
-    return user
-    } 
-    getUserData().then(data =>{
-      setCurrentUser(data)
-    }).catch(err => console.error(err))
-   
-  },[])
-
-
-
-
-
 
   const handleDashBored = () => {
     router.push("/app")
@@ -86,7 +67,7 @@ function Header() {
       </div>
       </div>
       <div className='w-1/2 h-full flex justify-end items-center '>
-    <DropDowsAvatar User ={currentUser} />
+    <DropDowsMenu  />
       </div>
     </div>
   )

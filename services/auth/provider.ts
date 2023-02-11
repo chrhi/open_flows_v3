@@ -1,5 +1,5 @@
 import {supabase} from '@/config/supabase'
-import {setCookieAuth , removeCookie} from "./useCookie"
+import {setCookieAuth , removeCookie} from "../../util/useCookie"
 
 
 export const createUserWithEmailAndPassword = async (email:string , password:string ) => {

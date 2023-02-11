@@ -1,9 +1,9 @@
 import { DateRangePicker } from 'react-date-range';
 import React, { useState } from 'react'
-import SelectTeam from "../components/SelectTeam"
+import MultipleSelectCheckmarks from "../components/MultipleSelectCheckmarks"
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import {handle_add_flow} from "@/context/handle_add_flow"
+import {addFlowReducer} from "@/store"
 
 
 
@@ -22,12 +22,12 @@ function NewProject() {
 
 
   //@ts-ignore
-  const set_data = handle_add_flow(state => state.set_data)
+  const set_data = addFlowReducer(state => state.set_data)
 
     //@ts-ignore
-    const data = handle_add_flow(state => state.flow)
+    const data = addFlowReducer(state => state.flow)
      //@ts-ignore
-    const members = handle_add_flow(state => state.members)
+    const members = addFlowReducer(state => state.members)
 
   
   const handleSelect = (ranges:any) => {
@@ -95,7 +95,7 @@ function NewProject() {
              <p className='text-gray-700 text-lg'>allow your team to have access to this project </p>
               </div>
         <div>
-         <SelectTeam />
+         <MultipleSelectCheckmarks />
         </div>
               </div>
       

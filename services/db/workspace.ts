@@ -1,7 +1,7 @@
 import {supabase} from '@/config/supabase'
-import { v4 as uuidv4 } from 'uuid';
+import type { ID } from '@/static/types'
 
-type ID = string | number
+
 
 
 export const create_workspace = async (owner:ID , name : string) => {
@@ -11,4 +11,8 @@ export const create_workspace = async (owner:ID , name : string) => {
   .insert([
     { owner, name  , members:[owner]  },
   ])
+}
+
+export const get_workspaces = async (user_id :ID) =>{
+  
 }

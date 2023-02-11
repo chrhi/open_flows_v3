@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 
 
-export const useCurrentPage = create(
+export const currentPageReducer = create(
   persist(
     (set, get) => ({
       currentPage: "dashboard",

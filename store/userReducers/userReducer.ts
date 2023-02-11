@@ -7,7 +7,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 
 
-export const useUser = create(
+export const userReducer = create(
   persist(
     (set) => ({
       user_id: "",

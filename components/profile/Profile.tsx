@@ -3,25 +3,18 @@ import React, { useEffect, useState } from 'react'
 import Salah from "@/images/salah.jpg"
 import { Button } from '@mui/material'
 import ProfileLoader from "./ProfileLoader"
-import { get_users } from '@/services/db/users'
+import {style} from "@/static/tailwind"
 
-const style = {
-    input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-  }
+
+
 
 function Profile() {
 
   const isLoading:boolean = false 
-  const [data , setData] = useState()
-  
 
   
 
-  useEffect(()=>{
-    get_users().then((profile)=> {
-      console.log(profile)
-    }).catch(err => console.error(err))
-  },[])
+  
 
   if(isLoading) return <ProfileLoader />
 

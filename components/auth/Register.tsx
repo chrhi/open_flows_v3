@@ -1,14 +1,13 @@
-import React , {useState} from 'react'
+import {useState} from 'react'
 import { createUserWithEmailAndPassword } from '@/services/auth/provider';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Button} from '@mui/material'
 import { useRouter } from 'next/router';
-import {useUser} from "@/context/useUser"
+import {userReducer} from "@/store"
+import {style} from "@/static/tailwind"
 
-const stype = {
-    input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-  }
+
 
   //to do handle redirect users to confirmed thier email
   
@@ -24,7 +23,7 @@ function Register() {
 
   //getting the user data and function to set it up
   //@ts-ignore 
-  const set_user = useUser(state => state?.setUser)
+  const set_user = userReducer(state => state?.setUser)
 
 
 
@@ -57,12 +56,12 @@ function Register() {
 
     <form className='w-full flex flex-col px-2  '>
       <label className='my-2'>your email</label>
-      <input type="email" className={stype.input} onChange={(event) => setEmail(prev => prev = event.target.value)} />
+      <input type="email" className={style.input} onChange={(event) => setEmail(prev => prev = event.target.value)} />
    
       <label  className='my-2'>your password</label>
-      <input type="password"   className={stype.input} onChange={(event) => setPassword(prev => prev = event.target.value)} />
+      <input type="password"   className={style.input} onChange={(event) => setPassword(prev => prev = event.target.value)} />
       <label  className='my-2'>confirmed password</label>
-      <input type="password"   className={stype.input}  onChange={(event) => setConfirmedPassword(prev => prev = event.target.value)} />
+      <input type="password"   className={style.input}  onChange={(event) => setConfirmedPassword(prev => prev = event.target.value)} />
       <div className='w-full mt-3 mb-1 flex justify-center items-center h-[70px]'>
       <Button 
       onClick={handleSubmit}

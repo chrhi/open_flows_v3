@@ -2,7 +2,7 @@ import { LoadingButton } from '@mui/lab'
 import { create_profile } from '@/services/db/users'
 import { create_workspace } from '@/services/db/workspace'
 
-import { useUser } from '@/context/useUser'
+import { userReducer } from '@/store'
 import {useState} from 'react'
 
 export default function AcountDetails() {
@@ -13,7 +13,7 @@ export default function AcountDetails() {
       const [isLoading , setIsLoading] = useState<boolean>(false)
       //getting the user id from the register form 
       //@ts-ignore
-      const user = useUser(state => state.user_id)
+      const user = userReducer(state => state.user_id)
 
     //graphing the data
     const [first_name , set_fist_name] = useState<string>()

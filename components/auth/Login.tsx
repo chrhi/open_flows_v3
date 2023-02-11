@@ -5,34 +5,27 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import {useState} from "react"
 import {singInWithEmailAndPassword} from "@/services/auth/provider"
 import { useRouter } from 'next/router';
-import { useUser } from '@/context/useUser';
-import { useStatus } from '@/context/app_status'
-
+import { userReducer , app_statusReducer } from '@/store';
 import { ID } from '@/static/types';
 import { get_user_profile } from '@/services/db/users';
+import {style} from "@/static/tailwind"
 //this is for testting 
 
 
-
-const stype = {
-    input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-  }
 
 
 function Login() {
 
 
- 
-
   //handelling the routing
   const router = useRouter()
   //@ts-ignore
-  const setUser = useUser(state => state.setUser)
+  const setUser = userReducer(state => state.setUser)
 
    //@ts-ignore
-    const set_user_photo = useStatus(state => state?.set_user_photo)
+    const set_user_photo = app_statusReducer(state => state?.set_user_photo)
      //@ts-ignore
-     const set_user_email = useStatus(state => state?.set_user_email)
+     const set_user_email = app_statusReducer(state => state?.set_user_email)
   
 
   const [isLoading , setIsLoading] = useState<boolean>(false)
@@ -50,13 +43,19 @@ function Login() {
     }
     singInWithEmailAndPassword(email , password).then(  (user) => {
 
+      console.log("you sign in secssusfully")
+
       get_user_profile(user?.id as ID).then((credentials)=>{
         if(!credentials) return
         const photo_url = credentials[0]?.photo_url 
         const name = credentials[0]?.first_name
+
  
      set_user_photo(photo_url)
      set_user_email(user?.email as string)
+     router.push("/app")
+     setIsLoading(false)
+     window.location.reload()
 
       })
       
@@ -64,8 +63,9 @@ function Login() {
     
       
    
-      router.push("/app")
+     
       setIsLoading(false)
+     console.log("not authorized")
     }).catch((err) => console.error(err))
     
   }
@@ -94,9 +94,9 @@ function Login() {
 
     <form className='w-full flex flex-col px-2  '>
       <label className='my-2'>your email</label>
-      <input type="email" className={stype.input}  onChange={(event) => setEmail(prev => prev = event.target.value)} />
+      <input type="email" className={style.input}  onChange={(event) => setEmail(prev => prev = event.target.value)} />
       <label  className='my-2'>your password</label>
-      <input type="password"   className={stype.input} onChange={(event) => setPassword(prev => prev = event.target.value)} />
+      <input type="password"   className={style.input} onChange={(event) => setPassword(prev => prev = event.target.value)} />
       <div className='w-full my-3 flex justify-center items-center h-[70px]'>
     
       <LoadingButton

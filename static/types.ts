@@ -27,4 +27,10 @@ export type User = {
     team :[ID] | null,
     settings : ID | null
 }
-
+//enums 
+enum Direction {
+    Up = 1,
+    Down,
+    Left,
+    Right,
+  }
