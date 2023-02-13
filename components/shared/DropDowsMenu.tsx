@@ -13,22 +13,10 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 
-
-
-
 export default function DropDowsMenu() {
- 
   //initializes hooks
    const router = useRouter()
    const user:User = userReducer(state => state.user)
-
-  //
-
-
-
-
-
-
   return (
     <div className="fixed text-right z-[100]">
     <Menu as="div" className="relative z-[100]  inline-block text-left">
@@ -81,8 +69,8 @@ export default function DropDowsMenu() {
                 </button>
              
               </div>
-              <div className="w-full h-[40px] bg-red-600  ">
-                <button className="w-full px-4 py-2 flex justify-start cursor-pointer hover:bg-gray-50 bg-white text-gray-700 text-md"> <AddIcon className ="text-gray-700" />  Add new workspace</button>
+              <div className="w-full h-[40px]   ">
+                <button className="w-full px-4 gap-x-2 py-2 flex justify-start cursor-pointer hover:bg-gray-50 bg-white text-gray-700 text-md"> <AddIcon className ="text-gray-700" />  Add new workspace</button>
               </div>
               </div>
               )}
@@ -92,10 +80,10 @@ export default function DropDowsMenu() {
                 <button
                 onClick={() => router.push("/app/user")}
                   className={`${
-                    active ? 'bg-blue-500 text-white' : 'text-gray-900'
-                  } mt-2 group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
+                  } mt-2 group  gap-x-4 flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <AccountBoxIcon />
+                  <AccountBoxIcon  className ="text-gray-700" />
                   My Profile
                 </button>
               )}
@@ -106,10 +94,10 @@ export default function DropDowsMenu() {
                 <button
                 onClick={() => router.push("/app/user")}
                   className={`${
-                    active ? 'bg-blue-500 text-white' : 'text-gray-900'
-                  } mt-2 group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
+                  } mt-2 group  gap-x-4 flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <PeopleAltIcon />
+                  <PeopleAltIcon  className ="text-gray-700" />
                   My Team
                 </button>
               )}
@@ -120,10 +108,10 @@ export default function DropDowsMenu() {
                 <button
                 onClick={() => router.push("/app/user/settings")}
                   className={`${
-                    active ? 'bg-blue-500 text-white' : 'text-gray-900'
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
+                  } group flex w-full gap-x-4 items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <TuneIcon />
+                  <TuneIcon  className ="text-gray-700" />
                   settings
                 </button>
               )}
@@ -133,10 +121,10 @@ export default function DropDowsMenu() {
                 <button
                 onClick={ logout}
                   className={`${
-                    active ? 'bg-blue-500 text-white' : 'text-gray-900'
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    active ? 'bg-gray-50 text-gray-900' : 'text-gray-900'
+                  } group flex w-full  gap-x-4 items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <LogoutIcon />
+                  <LogoutIcon  className ="text-gray-700"  />
                  log out
                 </button>
               )}

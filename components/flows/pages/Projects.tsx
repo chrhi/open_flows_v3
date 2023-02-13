@@ -13,7 +13,7 @@ function Projects() {
 
 
 
-  const {set_loading , report_error} = app_statusReducer()
+  const {set_loading } = app_statusReducer()
 
   const user = userReducer(state => state.user)
 
@@ -24,14 +24,13 @@ function Projects() {
   useEffect(()=>{
     const fetch_flows = async () => {
       if (!user.workspaces) throw new Error ("there is no work space")
-      const data = await get_flows(user.workspaces[0].id).catch(err => console.error(err))
+      const data = await get_flows(user.workspaces[0].id).catch(err =>{
+       console.log(err)
+      })
       if(data){
         setFlows(data)
       }else{
-        report_error({
-          is:true , 
-          payload:"there is error some were"
-      })
+       
       }
       
     }
@@ -44,7 +43,7 @@ function Projects() {
       console.log("there is no connection to load")
       
     })
-  },[user.workspaces , set_loading , report_error])
+  },[user.workspaces , set_loading ])
   
 // this component will render the all the projects
 if(error){

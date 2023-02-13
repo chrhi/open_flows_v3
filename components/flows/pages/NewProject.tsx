@@ -78,7 +78,7 @@ function NewProject() {
       </div>
       <div className='w-full h-[50px] flex gap-x-2 p-4 my-2 justify-between items-center'>
     <input placeholder='title' className={style.input}  onChange={(event) => set_title(prev => prev = event.target.value)} />
-    <input placeholder='image url' className={style.input}  onChange={(event) => set_emoji(prev => prev = event.target.value)} />
+    <input placeholder='image url' type='file' className={style.input}  onChange={(event) => set_emoji(prev => prev = "")} />
       </div>
       <div className='w-full h-fit flex gap-x-2 p-4 my-2 flex-col'>
         <div>

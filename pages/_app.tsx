@@ -4,12 +4,12 @@ import NextNProgress from 'nextjs-progressbar'
 import  Head  from 'next/head'
 import {useEffect} from "react"
 import { supabase } from '@/config/supabase'
-import {userReducer} from "@/store"
+import {userReducer } from "@/store"
 import { ID, User } from '@/static/types'
 import {get_user_profile} from "@/services/db/users"
 import {get_workspaces} from "@/services/db/workspace"
 import Loading from "@/components/shared/Loading"
-import ErrorDialog from '@/components/shared/ErrorDialog'
+
 
 
 
@@ -18,12 +18,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   //getting the reducer from thr store
   const setUser = userReducer(state => state.setUser)
-
-
-
-
-
-
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
@@ -40,11 +34,10 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   })
 
- 
-
  useEffect(() => {
   const user_credentials = async () => {
     //check if we have a user
+ 
    const response = await  supabase.auth.getSession().catch(error => console.error(error))
     if(response){
       const profile = await get_user_profile(response.data.session?.user.id as ID) 
@@ -60,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
           workspaces
         }
         setUser(current_user )
+      
       }else {
         // handle error display
         console.log("continue the sign up process")
@@ -75,7 +69,7 @@ export default function App({ Component, pageProps }: AppProps) {
   user_credentials().then(()=>{
     console.log("every thing went good")
   })
-  },[setUser])
+  },[setUser ])
 
 
   return(
@@ -90,7 +84,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Loading />
-      <ErrorDialog   />
+      
     <NextNProgress options={{ showSpinner: false }} />
     
     <Component {...pageProps} />

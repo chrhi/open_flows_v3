@@ -9,25 +9,14 @@ import { userReducer , app_statusReducer} from '@/store'
 
 
 
-function Profile() {
+export default function Profile() {
 
   const isLoading:boolean = false 
   //getting information from the global context 
   const {is_loading , report_error} = app_statusReducer()
   const {user} = userReducer()
 
-  
-
-
-
-  
-
-  
-
   if(isLoading) return <ProfileLoader />
-
-
-
   return (
     <div className='md:w-[70%] w-full xl:w-[900px] flex flex-col  h-fit bg-white rounded-lg shadow-lg'>
     <div className='w-full flex flex-col lg:flex-row min-h-[400px] h-fit '>
@@ -67,4 +56,3 @@ function Profile() {
   )
 }
 
-export default Profile

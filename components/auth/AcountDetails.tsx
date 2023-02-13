@@ -1,15 +1,17 @@
 import { LoadingButton } from '@mui/lab'
 import { create_profile } from '@/services/db/users'
 import { create_workspace } from '@/services/db/workspace'
+import { useRouter } from 'next/router'
+import { style } from '@/static/tailwind'
 
 import { userReducer } from '@/store'
 import {useState} from 'react'
 
 export default function AcountDetails() {
 
-    const stype = {
-        input :" w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-      }
+    const router = useRouter()
+
+  
       const [isLoading , setIsLoading] = useState<boolean>(false)
       //getting the user id from the register form 
       //@ts-ignore
@@ -40,7 +42,7 @@ export default function AcountDetails() {
      //console.log(data, succuss)
      console.log(data)
 
-
+     router.push("/auth/success")
       
     }
   
@@ -53,19 +55,19 @@ export default function AcountDetails() {
         </div>
         <div className='flex flex-col px-4 gap-x-2'>
         <h1>your first name</h1>
-        <input  className={stype.input} placeholder='your name' onChange={(event) => set_fist_name(prev => prev = event.target.value)}  />
+        <input  className={style.input} placeholder='your name' onChange={(event) => set_fist_name(prev => prev = event.target.value)}  />
         </div>
         <div className='flex flex-col px-4 gap-x-2'>
         <h1>your last name</h1>
-        <input  className={stype.input} placeholder='your last name' onChange={(event) => set_last_name(prev => prev = event.target.value)}   />
+        <input  className={style.input} placeholder='your last name' onChange={(event) => set_last_name(prev => prev = event.target.value)}   />
         </div>
         <div className='flex flex-col col-span-2 px-4 my-3 '>
         <h1>create a workspace </h1>
-        <input  className={stype.input} placeholder='work space'  onChange={(event) => set_work_space(prev => prev = event.target.value)} />
+        <input  className={style.input} placeholder='work space'  onChange={(event) => set_work_space(prev => prev = event.target.value)} />
         </div>
         <div className='flex flex-col col-span-2 px-4 my-3 '>
         <h1>enter a url for your photo </h1>
-        <input  className={stype.input} placeholder='url' onChange={(event) => set_photo_url(prev => prev = event.target.value)}  />
+        <input  className={style.input} placeholder='url' onChange={(event) => set_photo_url(prev => prev = event.target.value)}  />
         </div>
         <div className='flex  col-span-2 p-4 my-3 '>
     

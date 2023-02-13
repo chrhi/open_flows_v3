@@ -7,8 +7,6 @@ import { useRouter } from 'next/router';
 export default function Brief() {
     const route = useRouter()
     //handle getting parameter from url 
-
-    
     const [data , setData] = useState();
 
     useEffect(()=>{
@@ -20,10 +18,6 @@ export default function Brief() {
           //  const data = await get_flow()
         }
     },[])
-
-    
-
-
   return (
     <div className='w-[50%]'>
     <div className='w-full mb-2 h-[50px] flex justify-between items-center'>
@@ -36,7 +30,7 @@ export default function Brief() {
     </div>
 
     </div>
-    <div className ="w-full paper overflow-y-scroll  p-4 flex flex-col gap-y-4  bg-white rounded-lg shadow-sm">
+    <div className ="w-full paper overflow-y-scroll   p-4 flex flex-col gap-y-4  bg-white rounded-lg shadow-sm">
         <h1 className='text-2xl font-bold'>Brief</h1>
         <div className ="w-full h-[30px] flex flex-col justify-start my-4 ">
         <h2 className='text-gary-400 text-md '>title</h2>
@@ -63,14 +57,10 @@ export default function Brief() {
         <Button 
     
     variant="contained"  
-    className="rounded !w-[60%]  !text-lg bg-gradient-to-r from-sky-500 to-indigo-600" >
+    className="rounded !w-[60%] mb-8 !text-lg bg-gradient-to-r from-sky-500 to-indigo-600" >
       mark flow as complete
     </Button>
     </div>
-
-
-
-
     </div>
     </div>
   )
