@@ -21,7 +21,7 @@ export const app_statusReducer = create<Reducer ,[["zustand/persist",unknown]]>(
         is:false,
         payload:""
       },
-      is_loading: true,
+      is_loading: false,
      
       report_error:(input :{is:boolean , payload:string}) => set({error : input}),
       set_loading : (input :boolean) => {

@@ -8,6 +8,9 @@ import {userReducer} from "@/store"
 import { ID, User } from '@/static/types'
 import {get_user_profile} from "@/services/db/users"
 import {get_workspaces} from "@/services/db/workspace"
+import Loading from "@/components/shared/Loading"
+import ErrorDialog from '@/components/shared/ErrorDialog'
+
 
 
 
@@ -15,6 +18,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
   //getting the reducer from thr store
   const setUser = userReducer(state => state.setUser)
+
+
+
+
+
+
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
@@ -47,6 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
           email:  response.data.session?.user.email as string ,
           photo_url:profile[0].photo_url,
           name:profile[0].first_name,
+          last_name:profile[0].last_name,
           workspaces
         }
         setUser(current_user )
@@ -79,6 +89,8 @@ export default function App({ Component, pageProps }: AppProps) {
        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
+      <Loading />
+      <ErrorDialog   />
     <NextNProgress options={{ showSpinner: false }} />
     
     <Component {...pageProps} />

@@ -25,6 +25,7 @@ export  type User = {
     email:string ,
     photo_url : string , 
     name:string,
+    last_name:string ,
     workspaces?:any[] | undefined ,
     team? : [ID] | undefined
    }

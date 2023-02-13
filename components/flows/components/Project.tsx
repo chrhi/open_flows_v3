@@ -33,7 +33,10 @@ function Project({title , type , description , progress , image , id}:ProjectTyp
       '>
     <div className='w-full h-[100px]  flex items-center p-4 gap-x-2  z-0 '>
     <div className='w-[60px] h-[60px] rounded-full overflow-hidden'>
-      <Image src={image} alt={"project pic"} />
+      <Image
+        width={60}
+        height={60}
+      src={"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/sign/fkows-images/tesla-symbol.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJma293cy1pbWFnZXMvdGVzbGEtc3ltYm9sLmpwZyIsImlhdCI6MTY3NjI4NjgyMywiZXhwIjoxNzA3ODIyODIzfQ.tnP4iyVObz3eeGAjYBDvBFlaUPeHqv8FXcsyuIoFeNQ&t=2023-02-13T10%3A16%3A23.390Z"} alt={"project pic"} />
     </div>
     <div className='w-[60%] h-[100px] flex flex-col  items-start p-4 justify-between  '>
       <h1 className='text-gray-800 text-xl font-bold '>{title}</h1>

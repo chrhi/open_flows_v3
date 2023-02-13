@@ -22,9 +22,10 @@ export const userReducer = create<userReducerType ,[["zustand/persist",unknown]]
       user_id: "" as ID,
       user:{
         id:"" as ID, 
-        email:"" ,
+        email:"" , 
         photo_url : "" , 
         name:"",
+        last_name:"",
         workspaces:undefined ,
         team :  undefined
       },

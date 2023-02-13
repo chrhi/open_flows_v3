@@ -6,8 +6,14 @@ import {useEffect , useState} from "react"
 import Project from '../components/Project'
 import { userReducer } from '@/store'
 import {get_flows} from "@/services/db/flow"
+import {app_statusReducer} from "@/store"
+
 
 function Projects() {
+
+
+
+  const {set_loading , report_error} = app_statusReducer()
 
   const user = userReducer(state => state.user)
 
@@ -21,15 +27,24 @@ function Projects() {
       const data = await get_flows(user.workspaces[0].id).catch(err => console.error(err))
       if(data){
         setFlows(data)
+      }else{
+        report_error({
+          is:true , 
+          payload:"there is error some were"
+      })
       }
+      
     }
+    set_loading(true)
     fetch_flows().then(()=>{
+      set_loading(false)
 
     }).catch((err) =>{
       console.error(err)
-      setError(true)
+      console.log("there is no connection to load")
+      
     })
-  },[user.workspaces])
+  },[user.workspaces , set_loading , report_error])
   
 // this component will render the all the projects
 if(error){
