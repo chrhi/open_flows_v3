@@ -1,7 +1,29 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import {useEffect , useState} from 'react'
+import { get_flow } from '@/services/db/flow'
 
-function Brief() {
+import { useRouter } from 'next/router';
+
+export default function Brief() {
+    const route = useRouter()
+    //handle getting parameter from url 
+
+    
+    const [data , setData] = useState();
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            //handle passing that parameter to the function 
+            //get the data display it 
+            //handle loading state 
+            
+          //  const data = await get_flow()
+        }
+    },[])
+
+    
+
+
   return (
     <div className='w-[50%]'>
     <div className='w-full mb-2 h-[50px] flex justify-between items-center'>
@@ -53,5 +75,3 @@ function Brief() {
     </div>
   )
 }
-
-export default Brief

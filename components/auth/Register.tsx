@@ -6,6 +6,7 @@ import { Button} from '@mui/material'
 import { useRouter } from 'next/router';
 import {userReducer} from "@/store"
 import {style} from "@/static/tailwind"
+import { ID } from '@/static/types';
 
 
 
@@ -23,7 +24,7 @@ function Register() {
 
   //getting the user data and function to set it up
   //@ts-ignore 
-  const set_user = userReducer(state => state?.setUser)
+  const set_user = userReducer(state => state?.set_user_id)
 
 
 
@@ -39,7 +40,7 @@ function Register() {
 
     createUserWithEmailAndPassword(email , password).then((res => {
       
-      set_user(res?.id)
+      set_user(res?.id as ID)
       router.push("/auth/moreDetails")
     })).catch(err => console.error(err))
 
