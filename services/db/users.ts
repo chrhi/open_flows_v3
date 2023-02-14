@@ -16,7 +16,8 @@ if(error){
   return profiles
 }
 
-export const create_profile = async (id : string | number ,  first_name:string , last_name:string , photo_url:string , ) => {
+export const create_profile = async (id : string | number ,  first_name:string , last_name:string , photo_url:string ) => {
+  
     const { data, error } = await supabase
   .from('profiles')
   .insert([

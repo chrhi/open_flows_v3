@@ -39,13 +39,13 @@ function Project({title , type , description , progress , image , id}:ProjectTyp
       src={"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/sign/fkows-images/tesla-symbol.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJma293cy1pbWFnZXMvdGVzbGEtc3ltYm9sLmpwZyIsImlhdCI6MTY3NjI4NjgyMywiZXhwIjoxNzA3ODIyODIzfQ.tnP4iyVObz3eeGAjYBDvBFlaUPeHqv8FXcsyuIoFeNQ&t=2023-02-13T10%3A16%3A23.390Z"} alt={"project pic"} />
     </div>
     <div className='w-[60%] h-[100px] flex flex-col  items-start p-4 justify-between  '>
-      <h1 className='text-gray-800 text-xl font-bold '>{title}</h1>
-      <p className='text-sky-600 text-md font-bold '>{type}</p>
+      <h1 className='text-gray-800 text-xl font-bold truncate'>{title}</h1>
+      <p className='text-sky-600 text-md font-bold truncate'>{type}</p>
     </div>
     </div>
 
     <div className='w-full h-[100px]  z-0 '>
-    <p className=' text-sm leading-8 text-gray-600 text-start px-3'> {description} </p>
+    <p className=' text-sm leading-8 text-gray-600 text-start px-3 truncate'> {description} </p>
     </div>
     <div className='w-full h-[83px] flex flex-col items-center justify-between  py-2 '>
    

@@ -3,14 +3,18 @@ import { create_profile } from '@/services/db/users'
 import { create_workspace } from '@/services/db/workspace'
 import { useRouter } from 'next/router'
 import { style } from '@/static/tailwind'
-
+import { save_image } from '@/services/storage/avatar'
+import { v4 as uuidV4 } from "uuid"
 import { userReducer } from '@/store'
-import {useState} from 'react'
+import {useState , useRef} from 'react'
 
 export default function AcountDetails() {
 
     const router = useRouter()
 
+    const fileRef = useRef<HTMLInputElement>(null)
+
+  
   
       const [isLoading , setIsLoading] = useState<boolean>(false)
       //getting the user id from the register form 
@@ -27,7 +31,7 @@ export default function AcountDetails() {
     //this function will handle the submit event
     const handleSubmit = async () => {
   //  if there is no data then we should return
-     if(!first_name || !last_name || !photo_url || !work_space) return
+     if(!first_name || !last_name  || !work_space) return
      setIsLoading(prev => prev = !prev)
      
      if(!user){
@@ -35,8 +39,13 @@ export default function AcountDetails() {
       return
      }
      console.log("this is the user " + user)
-     const data = await create_profile(user ,first_name , last_name , photo_url).catch(err => console.error(err))
+     const image_name : string = uuidV4();
+     const data = await create_profile(user ,first_name , last_name , image_name).catch(err => console.error(err))
      const succuss = await create_workspace(user , work_space).catch(err => console.error(err))
+    // @ts-ignore
+     if(fileRef.current?.files[0]){
+     await save_image(user, image_name, fileRef.current?.files[0]! )
+     }
      
      setIsLoading(prev => prev = !prev)
      //console.log(data, succuss)
@@ -67,7 +76,7 @@ export default function AcountDetails() {
         </div>
         <div className='flex flex-col col-span-2 px-4 my-3 '>
         <h1>enter a url for your photo </h1>
-        <input  className={style.input} placeholder='url' onChange={(event) => set_photo_url(prev => prev = event.target.value)}  />
+        <input  className={style.input} type='file' placeholder='url' ref={fileRef}  />
         </div>
         <div className='flex  col-span-2 p-4 my-3 '>
     

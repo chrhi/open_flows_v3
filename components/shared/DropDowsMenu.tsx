@@ -5,12 +5,13 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouter } from 'next/router'
 import { logout } from '@/services/auth/provider'
 import {userReducer} from "@/store"
-import { User } from '@/static/types';
+import { ID, User } from '@/static/types';
 import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
 import TuneIcon from '@mui/icons-material/Tune';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { get_image } from "@/services/storage/avatar";
 
 
 export default function DropDowsMenu() {
@@ -41,7 +42,7 @@ export default function DropDowsMenu() {
               {({ active }) => (
               <div className ="w-full h-[80px] flex border-b border-gray-300 cursor-pointer hover:bg-gray-50" onClick={() => router.push("/app/user")}>
                 <div className='w-[30%] flex justify-center items-center'>
-                <Image src={"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/public/avatars/achraf.PNG"}
+                <Image src={get_image(user.id as ID , user.photo_url)}
                   alt="Picture of the current user"
                   width={45}
                   height={45}
@@ -49,9 +50,9 @@ export default function DropDowsMenu() {
                 </div>
                 <div className='w-[70%] flex flex-col justify-center '>
                 
-               <h1 className='text-lg   '>{user? user.name : null } {user? user.last_name : null }</h1>
+               <h1 className='text-lg truncate  '>{user? user.name : null } {user? user.last_name : null }</h1>
              
-               <p>{user? user.email : null }</p>
+               <p className="truncate">{user? user.email : null }</p>
                 </div>
 
               </div>

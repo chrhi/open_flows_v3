@@ -47,9 +47,9 @@ export default function App({ Component, pageProps }: AppProps) {
         const current_user :User ={ 
           id: response.data.session?.user.id as ID,
           email:  response.data.session?.user.email as string ,
-          photo_url:profile[0].photo_url,
-          name:profile[0].first_name,
-          last_name:profile[0].last_name,
+          photo_url:profile[0]?.photo_url,
+          name:profile[0]?.first_name,
+          last_name:profile[0]?.last_name,
           workspaces
         }
         setUser(current_user )

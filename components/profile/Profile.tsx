@@ -5,6 +5,8 @@ import { Button } from '@mui/material'
 import ProfileLoader from "./ProfileLoader"
 import {style} from "@/static/tailwind"
 import { userReducer , app_statusReducer} from '@/store'
+import { get_image } from '@/services/storage/avatar'
+import { ID } from '@/static/types'
 
 
 
@@ -22,7 +24,8 @@ export default function Profile() {
     <div className='w-full flex flex-col lg:flex-row min-h-[400px] h-fit '>
         <div className='lg:w-[20%] w-full h-full flex flex-col items-center px-4 gap-y-4 pt-4'>
             <p className='text-gray-400 text-lg  '>photo profile</p>
-            <Image src={Salah} alt='profile' className='rounded-full w-24 ' />
+            <Image src={get_image(user.id as ID , user.photo_url)} alt='profile'   width={60}
+                  height={60}  />
            <button
            className="inline-block bg-white rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
            >
