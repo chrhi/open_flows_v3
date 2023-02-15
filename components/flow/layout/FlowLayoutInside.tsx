@@ -2,13 +2,14 @@ import{ ReactNode } from 'react'
 
 
 type Props = {
-  children:ReactNode 
+  children:ReactNode ,
+  padding?:boolean,
 }
 //
-function FlowLayoutInside({children}:Props) {
+function FlowLayoutInside({children , padding}:Props) {
   return (
    
-    <div   className='ml-[6%] p-4 bg-gray-100 overflow-hidden h-screen flex gap-x-1 w-[94%]' >
+    <div   className={`ml-[6%] ${padding ? "p-4": "p-0"} bg-gray-100 overflow-hidden h-screen flex gap-x-1 w-[94%]`} >
        
       {children}
      

@@ -67,7 +67,7 @@ if(!flows) {
     <PageHeadFlows />
     <SquareLayout>
 
-    {flows && flows?.map((item: any , index: React.Key | null | undefined ) => <Project key={index} title={item.title} type='business' id={index}  description={item.brief} progress ="50%" image={""} />)}
+    {flows && flows?.map((item: any , index: React.Key | null | undefined ) => <Project key={index} title={item.title} type='business' id={item.id}  description={item.brief} progress ="50%" image={""} />)}
     </SquareLayout>
    </PageLayout>
   )

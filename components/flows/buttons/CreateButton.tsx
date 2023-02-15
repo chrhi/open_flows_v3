@@ -1,9 +1,8 @@
-import React from 'react'
 
-function CreateButton() {
+
+export default function CreateButton() {
   return (
     <div>CreateButton</div>
   )
 }
 
-export default CreateButton

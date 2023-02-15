@@ -1,9 +1,8 @@
-import React from 'react'
 
-function ComingTasks() {
+
+export default  function ComingTasks() {
   return (
     <div>CommingTasks</div>
   )
 }
 
-export default ComingTasks

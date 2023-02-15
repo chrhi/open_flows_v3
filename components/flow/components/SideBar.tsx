@@ -11,13 +11,14 @@ function SideBar() {
    const router = useRouter()
    const reducer = flowPageReducer(state => state?.change_current)
    const state = flowPageReducer(state => state?.current)
+   const {flowID} = router.query
   return (
     <div className='w-[6%] grid grid-cols-1 grid-rows-5 fixed heightAbdullah    left-0  bg-white sideBarH shadow-xl '>
        
         <Button 
         onClick={()=>{
          reducer(CONSTANTS.BRIEF)
-         router.push(`/app/flows/`)}}
+         router.push(`/app/flows/${flowID}`)}}
         className ={`!flex !flex-col ${state == "brief" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} >
            <AssignmentIcon className='text-[2.3rem]' />
            Brief
@@ -25,7 +26,7 @@ function SideBar() {
         <Button 
         onClick={() =>{ 
          reducer(CONSTANTS.DOCS)
-         router.push(`/app/flows/:param/docs`)}}
+         router.push(`/app/flows/${flowID}/docs`)}}
         className ={`!flex !flex-col ${state == "docs" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} >
            <DescriptionIcon className='text-[2.3rem]' />
           docs

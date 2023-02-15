@@ -3,6 +3,8 @@ import {currentPageReducer} from "./appReducers/currentPageReducer"
 import {app_statusReducer} from "./appReducers/app_statusReducer"
 import {userReducer} from "./userReducers/userReducer"
 import {flowPageReducer , CONSTANTS} from "./appReducers/flowPageReducer"
+import {current_selected_flow} from "./appReducers/current_selected_flow"
+import {selected_pdfReducer} from "./appReducers/selected_pdfReducer"
 
 
 //this will allow us to import all the reducers from one file
@@ -13,7 +15,7 @@ export {
     userReducer // this will have the data about the current user
     ,flowPageReducer,
     CONSTANTS,
-    
-
+    current_selected_flow,
+    selected_pdfReducer
 
 }

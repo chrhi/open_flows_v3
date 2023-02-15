@@ -10,6 +10,8 @@ export default function Brief() {
     const [data , setData] = useState();
 
     useEffect(()=>{
+        const {flowId} = route.query
+        console.log("this is flow id :" + flowId)
         const fetchData = async () => {
             //handle passing that parameter to the function 
             //get the data display it 
@@ -17,7 +19,7 @@ export default function Brief() {
             
           //  const data = await get_flow()
         }
-    },[])
+    },[route.query])
   return (
     <div className='w-[50%]'>
     <div className='w-full mb-2 h-[50px] flex justify-between items-center'>

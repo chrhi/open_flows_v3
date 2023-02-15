@@ -58,3 +58,4 @@ export default async function middleware(req: NextRequest) {
   // if none of the conditions are matte then just continue
     return NextResponse.next();
   }
+

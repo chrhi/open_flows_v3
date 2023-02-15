@@ -14,6 +14,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { get_image } from "@/services/storage/avatar";
 
 
+
 export default function DropDowsMenu() {
   //initializes hooks
    const router = useRouter()
@@ -65,13 +66,17 @@ export default function DropDowsMenu() {
               <h3 className="text-md text-gray-700 ">workspaces</h3> 
               </div>
               <div className="w-full flex flex-col ">
-                <button className="w-full px-4 py-2 flex justify-start bg-sky-500 text-white">
+                <button 
+                 onClick={() => router.push("/app/workspace")}
+                className="w-full px-4 py-2 flex justify-start bg-sky-500 text-white">
                   workspace
                 </button>
              
               </div>
               <div className="w-full h-[40px]   ">
-                <button className="w-full px-4 gap-x-2 py-2 flex justify-start cursor-pointer hover:bg-gray-50 bg-white text-gray-700 text-md"> <AddIcon className ="text-gray-700" />  Add new workspace</button>
+                <button
+                onClick={()=> router.push("/app/workspace")}
+                className="w-full px-4 gap-x-2 py-2 flex justify-start cursor-pointer hover:bg-gray-50 bg-white text-gray-700 text-md"> <AddIcon className ="text-gray-700" />  Add new workspace</button>
               </div>
               </div>
               )}
@@ -84,7 +89,7 @@ export default function DropDowsMenu() {
                     active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
                   } mt-2 group  gap-x-4 flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <AccountBoxIcon  className ="text-gray-700" />
+                  <AccountBoxIcon  className ="text-gray-600" />
                   My Profile
                 </button>
               )}
@@ -98,7 +103,7 @@ export default function DropDowsMenu() {
                     active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
                   } mt-2 group  gap-x-4 flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <PeopleAltIcon  className ="text-gray-700" />
+                  <PeopleAltIcon  className ="text-gray-600" />
                   My Team
                 </button>
               )}
@@ -112,7 +117,7 @@ export default function DropDowsMenu() {
                     active ? ' bg-gray-50 text-gray-900' : 'text-gray-900'
                   } group flex w-full gap-x-4 items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <TuneIcon  className ="text-gray-700" />
+                  <TuneIcon  className ="text-gray-600" />
                   settings
                 </button>
               )}
@@ -125,7 +130,7 @@ export default function DropDowsMenu() {
                     active ? 'bg-gray-50 text-gray-900' : 'text-gray-900'
                   } group flex w-full  gap-x-4 items-center rounded-md px-2 py-2 text-sm`}
                 >
-                  <LogoutIcon  className ="text-gray-700"  />
+                  <LogoutIcon  className ="text-gray-600"  />
                  log out
                 </button>
               )}

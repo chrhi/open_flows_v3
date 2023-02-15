@@ -2,6 +2,8 @@ import Image, { StaticImageData } from "next/image"
 import {motion} from "framer-motion"
 import { useRouter } from "next/router"
 import { Key } from "react"
+import {current_selected_flow} from "@/store"
+import { ID } from "@/static/types"
 
 
 
@@ -19,9 +21,13 @@ function Project({title , type , description , progress , image , id}:ProjectTyp
 
   const router = useRouter()
 
+  const reducer = current_selected_flow(state => state.change_current)
+
   return (
     <motion.div 
-     onClick={() => router.push(`/app/flows/${id}`)}
+     onClick={() => { 
+      reducer(id as ID)
+      router.push(`/app/flows/${id}`)}}
     initial={{opacity:0}}
     animate={{opacity:1}}
     exit={{opacity:0}}

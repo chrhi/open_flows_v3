@@ -13,7 +13,7 @@ function index() {
     <>
     <Header />
     <SideBar />
-    <FlowLayoutInside>
+    <FlowLayoutInside padding>
 
       <Brief />
       <Messages />
