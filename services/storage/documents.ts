@@ -20,6 +20,7 @@ export const save_document = async (project_id:ID , doc_id :ID , file :any ) => 
 export const get_document =  (project_id:ID , doc_id :ID) : string => {
     const path = project_id + "/" + doc_id
     const {data } =  supabase.storage.from("documents").getPublicUrl ( path )
+    console.log(data)
     return data.publicUrl
 }
 
