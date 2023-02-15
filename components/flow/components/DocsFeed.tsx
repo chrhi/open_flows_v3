@@ -76,12 +76,9 @@ function DocsFeed() {
     
         </div>
         <div className='w-full h-fit min-h-[100px] flex flex-col mt-2 '>
-    <Document name='feed back' />
-    <Document  name='oh no...' />
-    <Document name='bro..'/>
-    <Document name='invoice'/>
+
     
-    {  Array.isArray(documentList) && documentList.map(item => <Document  name={item.name } key={item.id} />)}
+    {  Array.isArray(documentList) && documentList.map(item => <Document  name={item.name } key={item.id} id={item.id} />)}
     
         </div>
     </div>
