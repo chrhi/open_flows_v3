@@ -49,19 +49,19 @@ function Header() {
       <h1 className='text-blue-600 text-2xl font-bold cursor-pointer hover:text-blue-700 '>OpenFlows</h1>  
       <div className='w-fit flex gap-x-6 items-center ml-6 '>
       
-      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "dashboard" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPageSelected === "dashboard"? "font-bold": null }`}>
+      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "dashboard" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "dashboard"? "!font-bold": null }`}>
        Dashboard 
       </Button>
-      <Button variant="text" onClick={handleFlows}  className={`  ${currentPageSelected === "flows" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPageSelected === "flows"? "font-bold": null }`}>
+      <Button variant="text" onClick={handleFlows}  className={`  ${currentPageSelected === "flows" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "flows"? "!font-bold": null }`}>
       Flows
       </Button>
-      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "chat" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPageSelected === "chat"? "font-bold": null }`}>
+      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "chat" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "chat"? "!font-bold": null }`}>
       chat
       </Button>
-      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "tasks" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPageSelected === "tasks"? "font-bold": null }`}>
+      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "tasks" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "tasks"? "!font-bold": null }`}>
       tasks
       </Button>
-      <Button variant="text" onClick={handleInvoices} className={`  ${currentPageSelected === "invoices" ? "text-black": "text-gray-600" } hover:text-gray-900 ${currentPageSelected === "invoices"? "font-bold": null }`}>
+      <Button variant="text" onClick={handleInvoices} className={`  ${currentPageSelected === "invoices" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "invoices"? "!font-bold": null }`}>
       invoices
       </Button>
       </div>
