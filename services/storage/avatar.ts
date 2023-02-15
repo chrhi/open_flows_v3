@@ -19,6 +19,6 @@ export const save_image = async (user_id:ID , image_name :string , file :any ) =
 export const get_image =  (user_id:ID , image_name :string) : string => {
     const path = user_id + "/" + image_name
     const {data } =  supabase.storage.from("avatars").getPublicUrl( path )
-    console.log(data)
-    return data.publicUrl
+    const decodedUrl = decodeURI(data.publicUrl)
+    return decodedUrl
 }
