@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import  { useState, useEffect } from 'react';
 import { Document, Page,pdfjs } from 'react-pdf';
 import {selected_pdfReducer , app_statusReducer , current_selected_flow} from "@/store"
-import {get_document} from "@/services/storage/documents"
+import {get_document , downloadPdf} from "@/services/storage/documents"
 
   
 //PDFjs worker from an external cdn
@@ -45,7 +45,12 @@ export default function DocView() {
 
     <div className='w-full flex flex-col '>
     <div className='w-full h-[120px] bg-white flex justify-end py-2 px-8'>
-    <Button variant="contained" className='!bg-sky-600 h-[40px]' >
+    <Button 
+    onClick={async () => {
+      console.log("clicked")
+      await downloadPdf(flow_id , state)
+    }}
+    variant="contained" className='!bg-sky-600 h-[40px]' >
     download
     </Button>
 
