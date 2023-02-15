@@ -9,9 +9,7 @@ import {get_flows} from "@/services/db/flow"
 import {app_statusReducer} from "@/store"
 
 
-function Projects() {
-
-
+export default function Projects() {
 
   const {set_loading } = app_statusReducer()
 
@@ -44,7 +42,6 @@ function Projects() {
       
     })
   },[user.workspaces , set_loading ])
-  
 // this component will render the all the projects
 if(error){
   return <h1>there is error look at console for more information</h1>
@@ -54,9 +51,7 @@ if(!flows) {
     <PageLayout>
      <PageHeadFlows />
      <SquareLayout>
-    
     <h1>loading</h1>
-
      </SquareLayout>
     </PageLayout>
    )
@@ -73,4 +68,3 @@ if(!flows) {
   )
 }
 
-export default Projects

@@ -6,7 +6,7 @@ import { Button } from '@mui/material';
 import { NextRouter, useRouter } from 'next/router';
 
 
-function PageHead() {
+export default function PageHead() {
   const router:NextRouter = useRouter()
   
   return (
@@ -24,4 +24,3 @@ function PageHead() {
   )
 }
 
-export default PageHead
