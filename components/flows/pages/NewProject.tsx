@@ -7,19 +7,35 @@ import {addFlowReducer , userReducer} from "@/store"
 import {create_flow} from "@/services/db/flow"
 import { style} from "@/static/tailwind"
 import { ID } from '@/static/types';
+import { useRouter } from 'next/router';
+import {app_statusReducer} from "@/store"
+import { Button} from '@mui/material'
+import SelectTailwind from "@/components/reuasable/SelectTailwind"
+import {flowAvatars} from "@/static/flowAvatars"
 
 
 function NewProject() {
 
   const {user} = userReducer()
 
+  const router = useRouter()
 
-  const [startDate , setStartDate] = useState(new Date())
-  const [endDate , setEndDate] = useState(new Date())
+  const set_loader = app_statusReducer(state => state.set_loading)
+
+
+  const [startDate , setStartDate] = useState<Date>(new Date())
+  const [endDate , setEndDate] = useState<Date>(new Date())
   const [title , set_title] = useState<string>()
   const [emoji , set_emoji] = useState<string>()
  
   const [brief , set_brief] = useState<string>()
+
+  const [avatar , setAvatar] = useState< {
+    id: number;
+    name: string;
+    url: string;
+
+}>(flowAvatars[0])
 
 
   //@ts-ignore
@@ -43,6 +59,7 @@ function NewProject() {
   }
 
   const handle_submit = async () => {
+   
     set_data({
       title,
       brief,
@@ -50,22 +67,27 @@ function NewProject() {
       starts_at:startDate,
       ends_at:endDate
     })
-    if(!user?.workspaces) return
+    if(!user?.workspaces || !title || !brief   ) return
+    set_loader(true)
    await  create_flow(
     user.workspaces[0]?.id as ID ,
     title as string ,
     brief as string,
     false ,
-    emoji as string,
-    startDate.toDateString() ,
-    endDate.toDateString() ,
+    avatar.url as string,
+    startDate?.toDateString()  ,
+    endDate?.toDateString() ,
     [user.id as ID]
    ).catch(error => {
     console.error(error)
+    set_loader(false)
    })
+
+   router.push("/app/flows") 
+   set_loader(false)
   }
 
-
+  
 
 
 
@@ -77,15 +99,15 @@ function NewProject() {
         <p className='text-gray-700 text-lg'>About your new flow </p>
       </div>
       <div className='w-full h-[50px] flex gap-x-2 p-4 my-2 justify-between items-center'>
-    <input placeholder='title' className={style.input}  onChange={(event) => set_title(prev => prev = event.target.value)} />
-    <input placeholder='image url' type='file' className={style.input}  onChange={(event) => set_emoji(prev => prev = "")} />
+    <input placeholder='title' className={`${style.input}  ` }  onChange={(event) => set_title(prev => prev = event.target.value)} />
+    <SelectTailwind state={avatar } setState={setAvatar} data={flowAvatars}  />
       </div>
       <div className='w-full h-fit flex gap-x-2 p-4 my-2 flex-col'>
         <div>
         <h1 className='text-gray-400 text-md'>brief</h1>
         <p className='text-gray-700 text-lg'>Add a strong description </p>
         </div>
-    <textarea   placeholder='this is your description about the project'  onChange={(event) => set_brief(prev => prev = event.target.value)} className={`${style.input } mt-1 h-[120px]`}/> 
+    <textarea   placeholder='this is your   description about the project'  onChange={(event) => set_brief(prev => prev = event.target.value)} className={`${style.input } mt-1 h-[120px] font-bold text-lg `}/> 
   
       </div>
       <div className='w-full min-h-[100px] h-fit flex flex-col p-4'>
@@ -115,19 +137,19 @@ function NewProject() {
       
 
     </div>
-    <div className='w-full h-[100px] gap-x-4 bg-gray-50 flex items-center justify-end px-6'>
-    <button 
+    <div className='w-full h-[100px] gap-x-4 bg-white flex items-center justify-end px-6'>
+    <Button 
     onClick={() => {
-      console.log(members)
-      console.log(data)}}
-    className="inline-flex   font-bold   justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+      router.push("/app/flows")  
+    }}
+    className="!inline-flex   !font-bold   !justify-center !rounded-md border !border-gray-300 !bg-white !px-4 py-2 !text-sm  !text-gray-700 !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 !focus:ring-offset-2 !focus:ring-offset-gray-100">
            cancel
-        </button>
-        <button 
+        </Button>
+        <Button 
         onClick={handle_submit}
-        className="inline-flex  font-bold    justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+        className="!inline-flex !text-white !font-bold    !justify-center !rounded-md !border !border-gray-300 !bg-gradient-to-r !from-sky-500 !to-indigo-600 !px-4 !py-2 !text-sm   !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 focus:ring-offset-2 !focus:ring-offset-gray-100">
            create
-        </button>
+        </Button>
         
     </div>
     </div>

@@ -3,7 +3,8 @@ import {  Button } from '@mui/material'
 import DropDowsMenu from "./DropDowsMenu"
 import { currentPageReducer } from '@/store'
 import { useRouter } from 'next/router'
-
+import Image, { StaticImageData } from "next/image"
+import Logo from "@/images/icons8-sail-boat-50.png"
 
 
 
@@ -46,7 +47,13 @@ function Header() {
   return (
     <div className='w-full !z-[800] h-[55px] sticky top-0 flex justify-between p-2 px-4 items-center bg-white shadow-sm'>
       <div className='w-1/2 h-full flex justify-start items-center '>
-      <h1 className='text-blue-600 text-2xl font-bold cursor-pointer hover:text-blue-700 '>OpenFlows</h1>  
+      {/* <h1 className='text-blue-600 text-2xl font-bold cursor-pointer hover:text-blue-700 '>OpenFlows</h1>   */}
+      <Image 
+      src={Logo}
+      alt="logo"
+      width={35}
+      height={35}
+      />
       <div className='w-fit flex gap-x-6 items-center ml-6 !text-gray-600 '>
       
       <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "dashboard" ? "!text-black": "!text-gray-600" } !hover:text-gray-900 ${currentPageSelected === "dashboard"? "!font-bold": null }`}>

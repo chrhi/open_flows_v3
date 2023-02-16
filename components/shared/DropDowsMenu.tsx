@@ -24,7 +24,7 @@ export default function DropDowsMenu() {
     <Menu as="div" className="relative z-[100]  inline-block text-left">
       <div className='h-[20px] w-[50px] flex justify-center items-center'>
       <Menu.Button >
-      <SettingsIcon />
+      <SettingsIcon className="!text-gray-700 hover:text-black " />
         </Menu.Button>
     
       </div>

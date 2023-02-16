@@ -4,8 +4,8 @@ import Button from "./Button";
 function Hero() {
   return (
    
-    <div className='w-full heaghtHero bg-gradient-to-r from-sky-500 to-indigo-600'>
-    <div className='w-[60%] h-full flex flex-col p-32 '>
+    <div className='w-full heaghtHero bg-gradient-to-r from-sky-500 pt-24 lg:pt-0 to-indigo-600'>
+    <div className='w-full  lg:w-[60%] h-full flex flex-col p-4  lg:p-32 '>
     <h1 className='text-5xl text-white font-bold mb-8 '>
     A Better Place To Run Your Business
     </h1>

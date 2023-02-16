@@ -64,4 +64,8 @@ html::-webkit-scrollbar-track {
     fill: white;
 }
 
-
+.abdullahTestWrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:normal;
+}

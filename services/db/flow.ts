@@ -33,6 +33,7 @@ export const get_flows = async (workspace_id : string | number) =>{
   .eq("workspace_id", workspace_id)
   if(error) {
     console.error(error)
+    return
   }
   return flows
 }
@@ -46,5 +47,6 @@ export const get_flow = async (id :ID) =>{
       if(error) {
         console.error(error)
       }
+      
       return flows
 }

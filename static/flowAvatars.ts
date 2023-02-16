@@ -1,0 +1,22 @@
+export const flowAvatars = [
+    {
+        id:1233,
+        name:"star",
+        url:"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/public/fkows-images/star.png"
+    },
+    {
+        id:648554,
+        name:"cup",
+        url:"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/public/fkows-images/cup.jpg"
+    },
+    {
+        id:8761,
+        name:"heart",
+        url:"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/public/fkows-images/heart.webp"
+    },
+    {
+        id:7284544,
+        name:"chime",
+        url:"https://nxjantewymzaubarsati.supabase.co/storage/v1/object/public/fkows-images/s.png"
+    },
+]

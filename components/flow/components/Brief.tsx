@@ -1,29 +1,56 @@
 import { Button } from '@mui/material'
 import {useEffect , useState} from 'react'
 import { get_flow } from '@/services/db/flow'
-
+import {current_selected_flow , app_statusReducer} from "@/store"
 import { useRouter } from 'next/router';
+import { ID } from '@/static/types';
+
 
 export default function Brief() {
     const route = useRouter()
     //handle getting parameter from url 
     const [data , setData] = useState();
 
+    const current_flow_id : ID = current_selected_flow(state => state.id)
+    const set_loader = app_statusReducer(state => state.set_loading)
+
     useEffect(()=>{
-        const {flowId} = route.query
-        console.log("this is flow id :" + flowId)
+       
+        
         const fetchData = async () => {
-            //handle passing that parameter to the function 
-            //get the data display it 
-            //handle loading state 
             
-          //  const data = await get_flow()
+            if(!current_flow_id) return
+            set_loader(true)
+            const flow = await get_flow(current_flow_id).catch((err) => {
+                set_loader(false)
+                return
+            })
+            set_loader(false)
+            if(!flow) return
+          
+            return flow
         }
-    },[route.query])
+        fetchData().then(payload =>{
+         
+            if(payload) {
+                //@ts-ignore
+                setData(payload)
+            }
+        }).catch(err => console.error(err))
+       
+       
+    },[current_flow_id , set_loader ])
+
+    console.log(data)
+ 
   return (
+  
     <div className='w-[50%]'>
+        
+
+ 
     <div className='w-full mb-2 h-[50px] flex justify-between items-center'>
-    <h1 className='text-2xl font-bold '>agency flows</h1>
+    <h1 className='text-2xl font-bold '>agency flows </h1>
 
     <div>
         <button  className="inline-flex z-[200] w-full font-bold gap-x-2 justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
@@ -36,15 +63,18 @@ export default function Brief() {
         <h1 className='text-2xl font-bold'>Brief</h1>
         <div className ="w-full h-[30px] flex flex-col justify-start my-4 ">
         <h2 className='text-gary-400 text-md '>title</h2>
-        <p className='text-black text-xl'> AgenciFlow</p>
+        {/* @ts-ignore */}
+        <p className='text-black text-xl'> {Array.isArray(data) &&  data[0]?.title }</p>
         </div>
         <div className ="w-full h-[30px] flex flex-col justify-start my-4 ">
         <h2  className='text-gary-400 text-md '>icon</h2>
+         {/* @ts-ignore */}
         <p className='text-black text-xl'>😍</p>
         </div>
         <div className ="w-full h-[110px] flex flex-col justify-start my-4 ">
             <h2  className='text-gary-400 text-md '>Brief</h2>
-            <p className='text-black text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur possimus, magni nulla eius, sit sequi eum fugiat repellat modi recusandae dolore obcaecati temporibus. Eveniet quos beatae, optio amet quisquam eligendi!</p>
+             {/* @ts-ignore */}
+            <p className='text-black text-xl'>{Array.isArray(data) &&  data[0]?.brief}</p>
         </div>
         <div className ="w-full h-[50px] flex flex-col justify-start my-4 ">
             <h2  className='text-gary-400 text-md '>Status</h2>
@@ -65,5 +95,11 @@ export default function Brief() {
     </div>
     </div>
     </div>
+  
+    
   )
+}
+
+function display (something:string) {
+    return <h1>{something}</h1>
 }
