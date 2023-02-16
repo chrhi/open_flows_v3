@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import { Key } from "react"
 import {current_selected_flow} from "@/store"
 import { ID } from "@/static/types"
-import Avatars from "./Avatars"
+
 
 
 
@@ -66,7 +66,7 @@ function Project({title , type , description , progress , image , id , icon_url}
    {/* this end with this  */}
    
    <div className='w-full h-[50px] flex items-center justify-between'>
-   <Avatars />
+  
    <p className="text-lg font-bold text-red-600" >admin</p>
    </div>
 
