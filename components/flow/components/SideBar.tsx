@@ -21,28 +21,28 @@ function SideBar() {
         onClick={()=>{
          reducer(CONSTANTS.BRIEF)
          router.push(`/app/flows/${flow_id}`)}}
-        className ={`!flex !flex-col ${state == "brief" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} >
-           <AssignmentIcon className='!text-[2.3rem]' />
+        className ={`!flex !flex-col ${state == "brief" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} >
+           <AssignmentIcon  />
            Brief
         </Button>
         <Button 
         onClick={() =>{ 
          reducer(CONSTANTS.DOCS)
          router.push(`/app/flows/${flow_id}/docs`)}}
-        className ={`!flex !flex-col ${state == "docs" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} >
-           <DescriptionIcon className='!text-[2.3rem]' />
+        className ={`!flex !flex-col ${state == "docs" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} >
+           <DescriptionIcon  />
           docs
         </Button>
-        <Button  className ={`!flex !flex-col ${state == "tasks" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} > 
-           <PlaylistAddCheckIcon className='!text-[2.3rem]' />
+        <Button  className ={`!flex !flex-col ${state == "tasks" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
+           <PlaylistAddCheckIcon/>
            tasks
         </Button>
-        <Button  className ={`!flex !flex-col ${state == "invoices" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} > 
-           <RequestPageIcon className='!text-[2.3rem]' />
+        <Button  className ={`!flex !flex-col ${state == "invoices" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
+           <RequestPageIcon />
            invoices
         </Button>
-        <Button  className ={`!flex !flex-col ${state == "team" ? "!text-blue-600 " : "!text-gray-400"} !font-normal`} > 
-           <GroupsIcon className='!text-[2.3rem]' />
+        <Button  className ={`!flex !flex-col ${state == "team" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
+           <GroupsIcon  />
            team
         </Button>
     </div>

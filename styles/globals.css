@@ -11,6 +11,10 @@ html{
     scrollbar-width: 5px;
     scrollbar-color: #777 #555;
 }
+body{
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
 
 html::-webkit-scrollbar {
     width: 7px;

@@ -12,7 +12,7 @@ function index() {
  
 
   return (
-    <>
+   <div >
     <Header />
    <SideBarInvoices />
     <FlowLayoutInside>
@@ -21,7 +21,7 @@ function index() {
       <Preview />
 
     </FlowLayoutInside>
-    </>
+    </div>
   )
 }
 
