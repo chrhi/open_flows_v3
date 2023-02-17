@@ -12,12 +12,29 @@ export type Flow = {
     creator: number | string ,
 }
 
+type client ={
+    client:string ,
+    email:string ,
+    description?:string
+}
 
-
-export type Account = {
+export type item ={
+    description?:string ,
+    price:number ,
+    quantity:number ,
 
 }
 
+
+export type Invoice = {
+    invoiceFrom : string ,
+    invoiceDetails?:string,
+    client:client,
+    note?:string ,
+    discount?:number ,
+    tax?:number,
+    items:item[] | []
+}
 
 
 export  type User = {

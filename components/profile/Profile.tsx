@@ -7,6 +7,7 @@ import {style} from "@/static/tailwind"
 import { userReducer , app_statusReducer} from '@/store'
 import { get_image } from '@/services/storage/avatar'
 import { ID } from '@/static/types'
+import { toast } from 'react-toastify'
 
 
 
@@ -49,7 +50,7 @@ export default function Profile() {
     </div>
     <div className='bg-white h-[70px] w-full items-center flex sm:justify-end justify-center px-4'>
     <Button 
-    
+  
     variant="contained"  
     className="rounded  !text-white text-lg  bg-gradient-to-r from-sky-500 to-indigo-600" >
      edit my profile

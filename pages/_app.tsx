@@ -9,6 +9,8 @@ import { ID, User } from '@/static/types'
 import {get_user_profile} from "@/services/db/users"
 import {get_workspaces} from "@/services/db/workspace"
 import Loading from "@/components/shared/Loading"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -84,6 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Loading />
+      <ToastContainer  />
       
     <NextNProgress options={{ showSpinner: false }} />
     

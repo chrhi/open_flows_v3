@@ -1,11 +1,27 @@
 import { style } from "@/static/tailwind"
 import {RowInput} from "./RowInput"
-import { Button, IconButton } from "@mui/material"
+import { Button } from "@mui/material"
+import {useRef , useState} from "react"
+import type {item} from "@/static/types"
 
-
+//handle  adding assign invoice to a project 
 
 
 export default function Creation() {
+  const clientName = useRef<HTMLInputElement>(null)
+  const clientEmail = useRef<HTMLInputElement>(null)
+  const ClientDescription = useRef<HTMLTextAreaElement>(null)
+  const invoiceFrom = useRef<HTMLInputElement>(null)
+  const invoiceDetails =  useRef<HTMLTextAreaElement>(null)
+  const taxInvoice =  useRef<HTMLInputElement>(null)
+  const noteInvoice =  useRef<HTMLTextAreaElement>(null)
+  const discountInvoice =  useRef<HTMLInputElement>(null)
+  const [items , setItems] = useState<item[]>([] as item[])
+
+  const handleSubmit = async () =>{
+    //handle adding data
+  }
+
   return (
     <div className='w-[60%] h-fit paper  p-4'>
     <div className='w-full mb-2 h-[50px] flex justify-between  items-center'>
@@ -14,22 +30,22 @@ export default function Creation() {
   
 
     </div>
-    <div className ="w-full bg-white  h-fit   p-4 flex flex-col  rounded-lg shadow-sm">
+    <form className ="w-full bg-white  h-fit   p-4 flex flex-col  rounded-lg shadow-sm">
       <div className="h-fit w-full flex ">
       {/* this is for the client info */}
       <div className=" flex flex-col p-4 w-[50%] h-[250px] gap-y-3">
       <h1 className={style.title} >Client</h1>
-      <input type="text" className={style.input}  placeholder="name" />
-      <input type="email" className={style.input} placeholder="client email"  />
-      <textarea  className={`${style.input} h-[100px]`}></textarea>
+      <input type="text" className={style.input} ref={clientName} placeholder="name" />
+      <input type="email" className={style.input}  ref={clientEmail}  placeholder="client email"  />
+      <textarea ref={ClientDescription} className={`${style.input} h-[100px]`}></textarea>
 
       </div>
        {/* this is for the company info */}
       <div className="p-4   gap-y-2 flex flex-col  w-[50%]  h-[250px]   ">
       <h1 className={style.title}>invoice</h1>
      
-      <input type="text" className={style.input}  placeholder="invoice from" />
-      <textarea  className={`${style.input} h-[100px]`} placeholder="invoice details"></textarea>
+      <input ref={invoiceFrom} type="text" className={style.input}  placeholder="invoice from" />
+      <textarea ref={invoiceDetails} className={`${style.input} h-[100px]`} placeholder="invoice details"></textarea>
       </div>
       </div>
       {/* this relate to a project  */}
@@ -42,10 +58,10 @@ export default function Creation() {
       {/* this is for getting amount $ */}
       <div className="w-full min-h-[150px] my-2 h-fit  flex flex-col ">
         <div className="flex gap-2 p-2">
-          <h1 className={`w-[45%] ${style.subTitle}`}>Description</h1>
-          <p className={`w-[15%] ${style.subTitle}`} >quantity</p>
-          <p  className={`w-[15%] ${style.subTitle}`} >price</p>
-          <p  className={`w-[15%] ${style.subTitle}`} >total</p>
+          <h1 className={`w-[54%] ${style.subTitle}`}>Description</h1>
+          <p className={`w-[12%] ${style.subTitle}`} >quantity</p>
+          <p  className={`w-[12%] ${style.subTitle}`} >price</p>
+          <p  className={`w-[12%] ${style.subTitle}`} >total</p>
         </div>
         <RowInput />
         <RowInput />
@@ -65,20 +81,20 @@ export default function Creation() {
      {/* this will take any note and add it to the invoice */}
      <div className="w-full h-[120px] mb-2  p-4 flex flex-col ">
     <h1 className={`${style.subTitle}`}>note</h1>
-    <textarea  className={`${style.input} h-[120px]`} placeholder="invoice details"></textarea>
+    <textarea  ref={noteInvoice} className={`${style.input} h-[120px]`} placeholder="invoice details"></textarea>
       </div>
       {/* this will take any note and add it to the invoice */}
     <div className="w-full my-2 p-4 gap-x-2 flex ">
     <div className="  flex w-[50%] flex-col h-[70px]  ">
     <h1 className={`${style.subTitle}`}>discount</h1>
-    <input type="number" className={style.input}  placeholder="0%" />
+    <input type="number" ref={discountInvoice} className={style.input}  placeholder="0%" />
     </div>
     <div className=" w-[50%] flex flex-col h-[70px] ">
     <h1 className={`${style.subTitle}`}>TAX AMOUNT</h1>
-    <input type="number" className={style.input}  placeholder="00.00$" />
+    <input type="number" ref={taxInvoice} className={style.input}  placeholder="00.00$" />
     </div>
     </div>
-    </div>
+    </form>
     </div>
   )
 }
