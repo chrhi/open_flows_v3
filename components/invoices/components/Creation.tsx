@@ -16,10 +16,22 @@ export default function Creation() {
   const taxInvoice =  useRef<HTMLInputElement>(null)
   const noteInvoice =  useRef<HTMLTextAreaElement>(null)
   const discountInvoice =  useRef<HTMLInputElement>(null)
-  const [items , setItems] = useState<item[]>([] as item[])
+  const [items , setItems] = useState<item[]>([{
+    price:0,
+    quantity:0,
+    description:""
+  }] )
 
   const handleSubmit = async () =>{
-    //handle adding data
+    console.log(items)
+  }
+
+  const handleAddingRow = () =>{
+   setItems([...items , {
+    price:0,
+    quantity:0,
+    description:""
+   }])
   }
 
   return (
@@ -27,7 +39,9 @@ export default function Creation() {
     <div className='w-full mb-2 h-[50px] flex justify-between  items-center'>
     <h1 className='text-2xl font-bold '>create invoices </h1>
 
-  
+  <button onClick={handleSubmit}>
+    see items
+  </button>
 
     </div>
     <form className ="w-full bg-white  h-fit   p-4 flex flex-col  rounded-lg shadow-sm">
@@ -63,11 +77,11 @@ export default function Creation() {
           <p  className={`w-[12%] ${style.subTitle}`} >price</p>
           <p  className={`w-[12%] ${style.subTitle}`} >total</p>
         </div>
-        <RowInput />
-        <RowInput />
-        <RowInput />
+       {items.map((row , index )=>  <RowInput state ={items} setState ={setItems} index={index} key={`${index} beeeeer`} />)}
+        
        <div className="w-full h-[40px] flex items-center justify-between   p-6">
        <Button 
+       onClick={handleAddingRow}
     className="!inline-flex   !font-bold h-[40px]  !justify-center !rounded-md border !border-gray-300 !bg-white !px-4 py-2 !text-sm  !text-gray-500 !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 !focus:ring-offset-2 !focus:ring-offset-gray-100">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
           <path fillRule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clipRule="evenodd" />
