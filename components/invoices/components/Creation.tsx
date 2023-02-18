@@ -1,8 +1,10 @@
 import { style } from "@/static/tailwind"
 import {RowInput} from "./RowInput"
 import { Button } from "@mui/material"
-import {useRef , useState} from "react"
-import type {item} from "@/static/types"
+import {useEffect, useRef , useState} from "react"
+import type {Invoice, item} from "@/static/types"
+import { useOnError } from "../hooks/useOnError"
+import {useCheckInternet} from "@/util/useCheckInternet"
 
 //handle  adding assign invoice to a project 
 
@@ -22,8 +24,37 @@ export default function Creation() {
     description:""
   }] )
 
+  const error = useOnError()
+
   const handleSubmit = async () =>{
-    console.log(items)
+    if(!navigator.onLine){
+      error("there is no internet connection ")
+      return
+
+    }
+
+    if(items[0].price == 0 || items[0].quantity == 0){
+      error("you have to add at least one item")
+    }
+    if(invoiceFrom.current?.value! == "" ){
+      error("your invoice information are required")
+    }
+
+    const invoice :Invoice = {
+      invoiceFrom:invoiceFrom.current?.value!,
+      invoiceDetails:invoiceDetails.current?.value!,
+      discount:Number(discountInvoice.current?.value!),
+      note:noteInvoice.current?.value!,
+      tax:Number(taxInvoice.current?.value!),
+      items:items,
+      client:{
+        client:clientName.current?.value!,
+        email:clientEmail.current?.value!,
+        description:ClientDescription.current?.value!,
+      }
+    }
+
+   
   }
 
   const handleAddingRow = () =>{
@@ -33,6 +64,13 @@ export default function Creation() {
     description:""
    }])
   }
+
+  useEffect(() => {
+     if(!navigator.onLine){
+      error("there is no internet connection ")
+     }
+  }, [error])
+  
 
   return (
     <div className='w-[60%] h-fit paper  p-4'>

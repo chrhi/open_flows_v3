@@ -86,7 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Loading />
-      <ToastContainer  />
+      <ToastContainer theme="dark" />
       
     <NextNProgress options={{ showSpinner: false }} />
     

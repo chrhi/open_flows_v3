@@ -1,7 +1,7 @@
 import { style } from "@/static/tailwind"
 import { IconButton } from "@mui/material"
 import type { item , ID } from "@/static/types"
-import { ChangeEvent, Dispatch, SetStateAction } from "react"
+import { ChangeEvent, Dispatch, SetStateAction , useState } from "react"
 
 type RowInputProps ={
   state:item[],
@@ -11,6 +11,8 @@ type RowInputProps ={
 
 export  const  RowInput = ({state , setState , index }:RowInputProps) => {
 
+  const [amount , setAmount] = useState<number>(0)
+
   const handleChange = (e:ChangeEvent<HTMLInputElement>) =>{
     //getting the data from the targeted input 
     const {name , value } = e.target
@@ -18,6 +20,9 @@ export  const  RowInput = ({state , setState , index }:RowInputProps) => {
     //@ts-ignore
     list[index][name] = value  
     setState([...list])
+    
+    const total : number = list[index]["price"] * list[index]["quantity"]
+    setAmount(total)
   }
 
   const handleRemove = () =>{
@@ -34,7 +39,7 @@ export  const  RowInput = ({state , setState , index }:RowInputProps) => {
     <input type="text" className={`${style.input} !w-[54%]` } name="description" onChange={(e) => handleChange(e)} placeholder="description" />
     <input type="number" className={`${style.input} !w-[12%]`} name="price"  placeholder="00" onChange={(e) => handleChange(e)} />
     <input type="number" className={`${style.input} !w-[12%] `} name="quantity" placeholder="00.00$" onChange={(e) => handleChange(e)} />
-    <input type="number" className={`${style.input} !w-[12%] `}  placeholder="00.00$" />
+    <input type="text" disabled className={`${style.input} !w-[12%] `} value={`${amount} $`} placeholder="00.00$" />
     <IconButton
     onClick={handleRemove}
     aria-label="delete" size="small">
