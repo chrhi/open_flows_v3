@@ -14,9 +14,9 @@ function Button() {
     
         <button 
          onClick={() => router.push("/auth/register")}
-        className='w-[300px]  shadow-xl flex items-center justify-center gap-x-4 h-[60px] p-4 font-bold text-2xl text-blue-500 bg-white rounded-full'>
+        className='w-[300px]  shadow-xl flex items-center justify-center gap-x-4 h-[60px] p-4 text-2xl text-blue-500 !normal-case bg-white rounded-full'>
         try for free 
-        <CallMadeIcon className='w-12 h-10  bg-sky-500 !text-white rounded-full  !font-bold'/>
+        <CallMadeIcon className='w-12 h-10  bg-gradient-to-r from-indigo-600  to-sky-400 !text-white rounded-full  !font-bold'/>
         </button>
     
     </div>
