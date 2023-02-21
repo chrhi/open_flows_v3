@@ -2,7 +2,9 @@
 
 export default  function ComingTasks() {
   return (
-    <div>CommingTasks</div>
+    <div className="w-full h-[400px] bg-white rounded-lg ">
+
+    </div>
   )
 }
 

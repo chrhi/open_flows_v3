@@ -1,4 +1,3 @@
-import { IconButton } from '@mui/material'
 import { useRouter } from 'next/router'
 import CallMadeIcon from '@mui/icons-material/CallMade';
 import React from 'react'
@@ -10,7 +9,7 @@ function Button() {
 
 
   return (
-    <div className='w-full h-[70px] flex justify-start my-4 mt-8 '>
+    <div className='w-full h-[70px] flex justify-center lg:justify-start  my-4 mt-8 '>
     
         <button 
          onClick={() => router.push("/auth/register")}

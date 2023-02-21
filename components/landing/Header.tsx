@@ -1,8 +1,8 @@
-import { Fab } from '@mui/material'
+import { SvgIconClassKey } from '@mui/material/SvgIcon';
 import { useRouter } from 'next/router'
 import logowhite from "@/images/logowhite.png"
 import Image from 'next/image'
-import React from 'react'
+
 
 function Header() {
 
@@ -11,7 +11,7 @@ function Header() {
   //bg-gradient-to-r from-sky-500 to-indigo-600
 
   return (
-    <header className='w-full h-[70px] flex  lg:justify-between items-center pt-12 bg-gradient-to-r from-sky-400  to-indigo-600'>
+    <header className='w-full h-[70px] flex  lg:justify-between items-center pt-12 bg-gradient-to-r from-sky-400 relative to-indigo-600'>
         <div className='flex w-[30%]   items-center mt-2 gap-x-2 h-full pl-12 '>
           <Image  
             src={logowhite}
@@ -24,7 +24,7 @@ function Header() {
         </div>
         <div className='lg:flex w-[40%] h-full items-center justify-center gap-x-4 hidden'>
           <a className ="text-white text-lg font-bold   cursor-pointer" href='#features' >Features</a>
-          <a  className ="text-white text-lg font-bold    cursor-pointer " href='#whyOpenFlow' >why OpenFlows?</a>
+          <a  className ="text-white text-lg font-bold    cursor-pointer " href='#whyOpenFlow' >why OpenFlow?</a>
           <a  className ="text-white text-lg font-bold  cursor-pointer " href='#aboutUs' >About us</a>
         </div>
         <div className='w-[30%] justify-end  h-full hidden lg:flex gap-x-4  items-center pr-6 '>
@@ -43,6 +43,7 @@ function Header() {
 </svg>
         </button>
         </div>
+     
     </header>
   )
 }

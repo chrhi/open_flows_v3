@@ -7,13 +7,17 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import {useRouter} from "next/router"
 import {flowPageReducer , CONSTANTS , current_selected_flow} from "@/store"
 
+const style ={
+   icon:"!text-[2rem] "
+}
+
 function SideBar() {
    const router = useRouter()
    const reducer = flowPageReducer(state => state?.change_current)
    const state = flowPageReducer(state => state?.current)
 
    const flow_id = current_selected_flow(state => state.id)
-   const {flowID} = router.query
+   
   return (
     <div className='w-[6%] grid grid-cols-1 grid-rows-5 fixed heightAbdullah    left-0  bg-white sideBarH shadow-xl '>
        
@@ -22,7 +26,7 @@ function SideBar() {
          reducer(CONSTANTS.BRIEF)
          router.push(`/app/flows/${flow_id}`)}}
         className ={`!flex !flex-col ${state == "brief" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} >
-           <AssignmentIcon  />
+           <AssignmentIcon className={`${style.icon}`} />
            Brief
         </Button>
         <Button 
@@ -30,19 +34,19 @@ function SideBar() {
          reducer(CONSTANTS.DOCS)
          router.push(`/app/flows/${flow_id}/docs`)}}
         className ={`!flex !flex-col ${state == "docs" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} >
-           <DescriptionIcon  />
+           <DescriptionIcon className={`${style.icon}`}  />
           docs
         </Button>
         <Button  className ={`!flex !flex-col ${state == "tasks" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
-           <PlaylistAddCheckIcon/>
+           <PlaylistAddCheckIcon className={`${style.icon}`} />
            tasks
         </Button>
         <Button  className ={`!flex !flex-col ${state == "invoices" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
-           <RequestPageIcon />
+           <RequestPageIcon  className={`${style.icon}`} />
            invoices
         </Button>
         <Button  className ={`!flex !flex-col ${state == "team" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} > 
-           <GroupsIcon  />
+           <GroupsIcon className={`${style.icon}`} />
            team
         </Button>
     </div>

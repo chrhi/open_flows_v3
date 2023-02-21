@@ -75,11 +75,12 @@ export default function Creation() {
   return (
     <div className='w-[60%] h-fit paper  p-4'>
     <div className='w-full mb-2 h-[50px] flex justify-between  items-center'>
-    <h1 className='text-2xl font-bold '>create invoices </h1>
+    <h1 className='text-3xl   '>create invoices </h1>
 
-  <button onClick={handleSubmit}>
-    see items
-  </button>
+    <Button 
+           className="!inline-flex !text-white !font-bold    !justify-center !rounded-md !border !border-gray-300 !bg-gradient-to-r !from-sky-500 !to-indigo-600 !px-4 !py-2 !text-sm   !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 focus:ring-offset-2 !focus:ring-offset-gray-100">
+           close and save
+     </Button>
 
     </div>
     <form className ="w-full bg-white  h-fit   p-4 flex flex-col  rounded-lg shadow-sm">

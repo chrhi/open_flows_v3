@@ -1,10 +1,22 @@
-export const getInvoice = ( ) =>{
+export type item ={
+    name:string , 
+    price:number
+}
+
+
+
+export const getInvoice = ( items:item[] ) =>{
+
+   const itemsPrices = items.map(item => item.price)
+   const total = itemsPrices.reduce((prev , curr) => curr = prev + curr)
+
+
     return `
     <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Abdullah invoice template</title>
     
     <style>
     .invoice-box {
@@ -127,15 +139,15 @@ export const getInvoice = ( ) =>{
                     <table>
                         <tr>
                             <td>
-                               <b>YourCodeCamp</b> , Inc.<br>
+                               <b>sonatrach</b> , Inc.<br>
                                 12345 Sunny Road<br>
                                 Sunnyville, CA 12345
                             </td>
                             
                             <td>
                                 YourCodeCamp Corp.<br>
-                                Sam Doe<br>
-                                john@example.com
+                                abdellah chehri<br>
+                                mahdi.chahri55@gmail.com
                             </td>
                         </tr>
                     </table>
@@ -172,41 +184,44 @@ export const getInvoice = ( ) =>{
                 </td>
             </tr>
             
-            <tr class="item">
+           ${items.map((item  , index)=> {
+
+            if(index === items.length){
+                return (
+                    `<tr class="item last">
+                    <td>
+                        ${item.name}
+                    </td>
+                    
+                    <td>
+                        $${item.price}
+                    </td>
+                </tr>`
+                )
+            }
+
+            return(
+                `<tr class="item">
                 <td>
-                    Website design
-                </td>
-                
+                ${item.name}
+                 </td>
+             
                 <td>
-                    $300.00
+                $${item.price}
                 </td>
-            </tr>
+             </tr>`
+            )
+          
+           })}
+          
             
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
-                
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-                
-                <td>
-                    $10.00
-                </td>
-            </tr>
+          
             
             <tr class="total">
                 <td></td>
                 
                 <td>
-                   Total: $385.00
+                   Total: $${total}
                 </td>
             </tr>
         </table>
@@ -214,4 +229,8 @@ export const getInvoice = ( ) =>{
 </body>
 </html>
     `
+}
+
+function previous(previousValue: item, currentValue: item, currentIndex: number, array: item[]): item {
+    throw new Error("Function not implemented.")
 }

@@ -17,8 +17,8 @@ function Features() {
     whileInView={{ opacity:[0,1] }}
     
     className='w-full h-screen bg-white flex flex-col items-center pt-24 gap-y-4 px-12 '>
-    <h1 className='text-4xl font-bold text-center '>Have all your agency operations in one place</h1>
-    <p className='text-lg font-gray-700 text-center'>Tired of having to set up clients on multiple platforms for communication, billing, and project management (and the cost that comes with it)?
+    <h1 className='text-2xl lg:text-4xl font-bold text-center '>Have all your agency operations in one place</h1>
+    <p className='lg:text-lg text-md font-gray-700 text-center'>Tired of having to set up clients on multiple platforms for communication, billing, and project management (and the cost that comes with it)?
 
 Ditch Slack, Asana, Simple Invoices - AgenciFlow does all that for you.</p>
 <Image  src={makbook} alt="laptop showcase" />

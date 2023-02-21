@@ -2,7 +2,9 @@ import React from 'react'
 
 function ProjectCurasol() {
   return (
-    <div>ProjectCurasol</div>
+  <div>
+    hello 
+  </div>
   )
 }
 

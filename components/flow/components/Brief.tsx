@@ -4,6 +4,7 @@ import { get_flow } from '@/services/db/flow'
 import {current_selected_flow , app_statusReducer} from "@/store"
 import { useRouter } from 'next/router';
 import { ID } from '@/static/types';
+import Image from 'next/image';
 
 
 export default function Brief() {
@@ -50,16 +51,19 @@ export default function Brief() {
 
  
     <div className='w-full mb-2 h-[50px] flex justify-between items-center'>
-    <h1 className='text-2xl font-bold '>agency flows </h1>
+    {/* @ts-ignore */}
+    <h1 className='text-2xl  '>{Array.isArray(data) &&  data[0]?.title } </h1>
 
     <div>
-        <button  className="inline-flex z-[200] w-full font-bold gap-x-2 justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm  text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-            edit
-        </button>
+    <Button 
+     
+     className="!inline-flex !text-white !font-bold    !justify-center !rounded-md !border !border-gray-300 !bg-gradient-to-r !from-sky-500 !to-indigo-600 !px-4 !py-2 !text-sm   !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 focus:ring-offset-2 !focus:ring-offset-gray-100">
+       edit project
+  </Button>
     </div>
 
     </div>
-    <div className ="w-full paper overflow-y-scroll   p-4 flex flex-col gap-y-4  bg-white rounded-lg shadow-sm">
+    <div className ="w-full paper   p-4 flex flex-col gap-y-4  bg-white rounded-lg shadow-sm">
         <h1 className='text-2xl font-bold'>Brief</h1>
         <div className ="w-full h-[30px] flex flex-col justify-start my-4 ">
         <h2 className='text-gary-400 text-md '>title</h2>
@@ -69,7 +73,7 @@ export default function Brief() {
         <div className ="w-full h-[30px] flex flex-col justify-start my-4 ">
         <h2  className='text-gary-400 text-md '>icon</h2>
          {/* @ts-ignore */}
-        <p className='text-black text-xl'>😍</p>
+       <Image src={''} alt={'icon image'} className='w-[100px] h-[100px]'  />
         </div>
         <div className ="w-full h-[110px] flex flex-col justify-start my-4 ">
             <h2  className='text-gary-400 text-md '>Brief</h2>

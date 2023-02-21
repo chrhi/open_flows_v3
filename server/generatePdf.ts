@@ -1,13 +1,14 @@
 import puppeteer  from 'puppeteer'
 import hb  from 'handlebars'
+import type { item } from './invoiceTemplate';
 
 
 
-export const generatePdf  = async (name:string , content:()=> string ) =>{
+export const generatePdf  = async (name:string , items:item[] , content:(items:item[])=> string ) =>{
 
 let data = {};
 
-const template = hb.compile(content(), { strict: true });
+const template = hb.compile(() => content(items), { strict: true });
 
 // we have compile our code with handlebars
 const result = template(data);

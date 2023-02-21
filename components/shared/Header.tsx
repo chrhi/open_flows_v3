@@ -62,12 +62,8 @@ function Header() {
       <Button variant="text" onClick={handleFlows}  className={`  ${currentPageSelected === "flows" ? "!text-black": "!text-gray-600" } !normal-case !text-lg  !hover:text-gray-900 ${currentPageSelected === "flows"? "!font-bold": null }`}>
       Flows
       </Button>
-      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "chat" ? "!text-black": "!text-gray-600" } !normal-case !text-lg  !hover:text-gray-900 ${currentPageSelected === "chat"? "!font-bold": null }`}>
-      chat
-      </Button>
-      <Button variant="text" onClick={handleDashBored} className={`  ${currentPageSelected === "tasks" ? "!text-black": "!text-gray-600" } !normal-case !text-lg  !hover:text-gray-900 ${currentPageSelected === "tasks"? "!font-bold": null }`}>
-      tasks
-      </Button>
+     
+      
       <Button variant="text" onClick={handleInvoices} className={`  ${currentPageSelected === "invoices" ? "!text-black": "!text-gray-600" } !normal-case !text-lg  !hover:text-gray-900 ${currentPageSelected === "invoices"? "!font-bold": null }`}>
       invoices
       </Button>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@/components/shared/Header'
 import PageLayout from '@/components/shared/PageLayout'
-function index() {
+export default function index() {
   return (
     <>
     <Header />
@@ -17,4 +17,3 @@ function index() {
   )
 }
 
-export default index
