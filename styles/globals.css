@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital,wght@0,100;0,500;0,600;0,700;0,800;0,900;1,900&family=Qwitcher+Grypen:wght@700&family=Rubik:wght@500&display=swap');
 *{
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 
@@ -14,6 +15,7 @@ html{
 body{
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  
 }
 
 html::-webkit-scrollbar {
