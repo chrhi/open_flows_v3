@@ -1,9 +1,8 @@
 import React from 'react'
 
-function WhyOpenFlow() {
+export default  function WhyOpenFlow() {
   return (
-    <div className='w-full h-screen bg-white ' id="whyOpenFlow"></div>
+    <div className='w-full mt-8 h-screen bg-white ' id="whyOpenFlow"></div>
   )
 }
 
-export default WhyOpenFlow

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
      
-      <main >
+      <main className='bg-gradient-to-r from-sky-400 to-indigo-600' >
        <Header />
        <Hero />
        

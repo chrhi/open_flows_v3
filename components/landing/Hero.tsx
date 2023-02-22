@@ -6,8 +6,8 @@ function Hero() {
   //bg-gradient-to-r from-sky-500 to-indigo-600
   return (
    
-    <div className='w-full heaghtHero flex lg:flex-row flex-col   items-center px-6 justify-center  
-    bg-gradient-to-r from-sky-400 to-indigo-600
+    <div className='w-full mx-auto xl:w-[1224px]  heaghtHero flex lg:flex-row flex-col   items-center px-6 justify-center  
+    
     '>
     <div className='w-full  lg:w-[50%] h-fit flex flex-col md:items-center lg:items-start   p-8 pt-32    lg:px-8 '>
     <h1 className='text-2xl md:text-3xl lg:text-5xl text-white font-bold mb-8 '>

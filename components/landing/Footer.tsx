@@ -5,7 +5,7 @@ import logowhite from "@/images/logowhite.png"
 function Footer() {
   return (
    
-<footer className=" h-[400px] flex flex-col bg-indigo-900">
+<footer className="w-full h-[400px] flex flex-col bg-indigo-900">
 
 <div className='w-full h-[330px] grid grid-cols-4 p-6 place-items-center '>
 <ul>

@@ -7,7 +7,7 @@ type PageLayout ={
 
 function PageLayout({children}:PageLayout) {
   return (
-    <div className='w-full bodyOfApp bg-gray-100 '>
+    <div className='w-full bodyOfApp bg-gray-50 '>
         {children}
     </div>
   )

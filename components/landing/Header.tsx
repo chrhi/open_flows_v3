@@ -11,7 +11,7 @@ function Header() {
   //bg-gradient-to-r from-sky-500 to-indigo-600
 
   return (
-    <header className='w-full h-[70px] flex  lg:justify-between items-center pt-12 bg-gradient-to-r from-sky-400 relative to-indigo-600'>
+    <header className='w-full mx-auto xl:w-[1224px]  h-[70px] flex  lg:justify-between items-center pt-12'>
         <div className='flex w-[30%]   items-center mt-2 gap-x-2 h-full pl-12 '>
           <Image  
             src={logowhite}

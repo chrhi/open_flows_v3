@@ -84,6 +84,7 @@ export default function App({ Component, pageProps }: AppProps) {
        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
        
         <link rel="manifest" href="/site.webmanifest" />
+        <script src="//code.tidio.co/f4ntqdkrkcmkov2pbgapiuevig4fhtbq.js" async></script>
       </Head>
       <Loading />
       <ToastContainer theme="dark" />
