@@ -1,8 +1,14 @@
 import React from 'react'
+import TxT from './TxT'
 
-export default  function WhyOpenFlow() {
+
+
+export default function WhyOpenFlow() {
   return (
-    <div className='w-full mt-8 h-screen bg-white ' id="whyOpenFlow"></div>
+    <div className="bg-white py-24 sm:py-32 relative">
+     <TxT />
+    </div>
   )
 }
+
 

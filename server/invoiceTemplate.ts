@@ -231,6 +231,3 @@ export const getInvoice = ( items:item[] ) =>{
     `
 }
 
-function previous(previousValue: item, currentValue: item, currentIndex: number, array: item[]): item {
-    throw new Error("Function not implemented.")
-}

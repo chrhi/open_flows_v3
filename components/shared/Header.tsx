@@ -45,7 +45,7 @@ function Header() {
   },[currentPage])
 
   return (
-    <div className='w-full !z-[800] h-[55px] sticky top-0 flex justify-between p-2 px-4 items-center bg-white shadow-sm'>
+    <div className='w-full !z-[800] h-[55px] sticky top-0 flex justify-between p-2 px-4 items-center bg-white shadow-sm border-b border-gray-300 '>
       <div className='w-1/2 h-full flex justify-start items-center '>
       {/* <h1 className='text-blue-600 text-2xl font-bold cursor-pointer hover:text-blue-700 '>OpenFlows</h1>   */}
       <Image 

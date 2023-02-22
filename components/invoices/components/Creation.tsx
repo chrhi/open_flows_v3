@@ -73,8 +73,8 @@ export default function Creation() {
   
 
   return (
-    <div className='w-[60%] h-fit paper  p-4'>
-    <div className='w-full mb-2 h-[50px] flex justify-between  items-center'>
+    <div className='w-full md:w-[90%] mx-auto lg:w-[60%] h-fit paper  xl:w-[800px]  p-4'>
+    <div className='w-full  mb-2 h-[50px] flex justify-between  items-center'>
     <h1 className='text-3xl   '>create invoices </h1>
 
     <Button 
@@ -83,7 +83,7 @@ export default function Creation() {
      </Button>
 
     </div>
-    <form className ="w-full bg-white  h-fit   p-4 flex flex-col  rounded-lg shadow-sm">
+    <form className ="w-full bg-white   h-fit   p-4 flex flex-col  rounded-lg shadow-sm">
       <div className="h-fit w-full flex ">
       {/* this is for the client info */}
       <div className=" flex flex-col p-4 w-[50%] h-[250px] gap-y-3">

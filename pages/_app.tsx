@@ -11,6 +11,7 @@ import {get_workspaces} from "@/services/db/workspace"
 import Loading from "@/components/shared/Loading"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-clock/dist/Clock.css';
 
 
 
@@ -54,19 +55,14 @@ export default function App({ Component, pageProps }: AppProps) {
           last_name:profile[0]?.last_name,
           workspaces
         }
-        setUser(current_user )
-      
+        setUser(current_user )      
       }else {
         // handle error display
         console.log("continue the sign up process")
       }
-      
-      
-   
     }else{
       console.log("there is an error in the _app.ts file")
     }
-
   }
   user_credentials().then(()=>{
     console.log("every thing went good")

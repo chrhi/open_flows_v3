@@ -25,7 +25,7 @@ function SideBar() {
         onClick={()=>{
          reducer(CONSTANTS.BRIEF)
          router.push(`/app/flows/${flow_id}`)}}
-        className ={`!flex !flex-col ${state == "brief" ? "!text-blue-600 " : "!text-gray-400"} !normal-case  !font-normal`} >
+        className ={`!flex !flex-col ${state == "brief" ? " !text-indigo-500   " : "!text-gray-400"} !normal-case`} >
            <AssignmentIcon className={`${style.icon}`} />
            Brief
         </Button>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProjectCurasol() {
+export default function ProjectCurasol() {
   return (
   <div>
     hello 
@@ -8,4 +8,3 @@ function ProjectCurasol() {
   )
 }
 
-export default ProjectCurasol
