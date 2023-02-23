@@ -19,7 +19,7 @@ export default function PrayerTimes() {
 
   const BlockClock = (name:string , showBorder:boolean = true) => (
     <div className={`w-[18%] h-[80%] ${showBorder ? "border-r border-gray-600 " : ""} flex flex-col items-center justify-center gap-y-4 `}>
-    <Clock  value={value} className={style.clock} />
+    <Clock renderSecondHand={false} value={value} className={style.clock} />
     <h1>{name}</h1>
     </div>
   )

@@ -4,7 +4,7 @@ import { useTypewriter , Cursor } from 'react-simple-typewriter'
 function Reminder() {
 
   const [text] = useTypewriter({
-    words:['it is far better to dare great things','to win glorias battles ' , 'even though checked by failed ', 'then to take rank with those poor operates', 'who nether enjoy nor safer much'],
+    words:['Far better to dare mighty things, to win glorious triumphs,','even though checkered by failure, than to take rank with those poor spirits ' , 'even though checked by failed ', ' who neither enjoy much nor suffer much . . . in the grey twilight that knows not victory nor defeat.'],
     loop:true,
   });
 
