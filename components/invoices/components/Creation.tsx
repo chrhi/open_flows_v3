@@ -4,10 +4,17 @@ import { Button } from "@mui/material"
 import {useEffect, useRef , useState} from "react"
 import type {Invoice, item} from "@/static/types"
 import { useOnError } from "../hooks/useOnError"
-import {useCheckInternet} from "@/util/useCheckInternet"
+import {SyncInvoice} from '@/store'
+
+
 
 //handle  adding assign invoice to a project 
 
+type projectType ={
+  id:number,
+  name:string ,
+  url:string ,
+}| null
 
 export default function Creation() {
   const clientName = useRef<HTMLInputElement>(null)
@@ -23,8 +30,10 @@ export default function Creation() {
     quantity:0,
     description:""
   }] )
-
+  const setInvoiceSync = SyncInvoice(state => state.setInvoice)
   const error = useOnError()
+  
+ 
 
   const handleSubmit = async () =>{
     if(!navigator.onLine){
@@ -65,11 +74,25 @@ export default function Creation() {
    }])
   }
 
+  // const setInvoiceSyncFunction = () => {
+  //   setInvoiceSync()
+  // }
   useEffect(() => {
-     if(!navigator.onLine){
-      error("there is no internet connection ")
-     }
-  }, [error])
+    const invoice :Invoice = {
+      invoiceFrom:invoiceFrom.current?.value!,
+      invoiceDetails:invoiceDetails.current?.value!,
+      discount:Number(discountInvoice.current?.value!),
+      note:noteInvoice.current?.value!,
+      tax:Number(taxInvoice.current?.value!),
+      items:items,
+      client:{
+        client:clientName.current?.value!,
+        email:clientEmail.current?.value!,
+        description:ClientDescription.current?.value!,
+      }
+    }
+  setInvoiceSync(invoice)
+  }, [setInvoiceSync, items ])
   
 
   return (
@@ -78,6 +101,7 @@ export default function Creation() {
     <h1 className='text-3xl   '>create invoices </h1>
 
     <Button 
+ 
            className="!inline-flex !text-white !font-bold    !justify-center !rounded-md !border !border-gray-300 !bg-gradient-to-r !from-sky-500 !to-indigo-600 !px-4 !py-2 !text-sm   !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 focus:ring-offset-2 !focus:ring-offset-gray-100">
            close and save
      </Button>
@@ -102,6 +126,7 @@ export default function Creation() {
       </div>
       </div>
       {/* this relate to a project  */}
+   
 
       <div className="w-full h-[70px] flex flex-col">
     <h1>thi invoice is assigned to </h1>

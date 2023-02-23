@@ -1,6 +1,7 @@
 import React from 'react'
 import Row from "@/util/Row"
 import Stack from "@/util/Stack"
+import {SyncInvoice} from '@/store'
 
 
 const styleTable = {
@@ -9,6 +10,9 @@ const styleTable = {
 
 
 export default function Preview() {
+
+  const invoice = SyncInvoice(state => state.invoice)
+
   return (
     <div className=' w-[0] lg:w-[40%] transition hidden lg:flex h-full  flex-col justify-start  p-4 items-center'>
       <div className='w-full h-[60px] flex justify-center items-center'>
@@ -35,14 +39,14 @@ export default function Preview() {
         <div className='w-full flex justify-between p-4 '>
         <div className='w-[50%]'>
           <p className='text-sm font-bold'>To</p>
-          <p className='text-gray-400  text-xs ' >name</p>
-          <p className='text-gray-400  text-xs '>email </p>
-          <p className='text-gray-400  text-xs '>street</p>
+          <p className='text-gray-400  text-xs ' >{invoice?.client.client}</p>
+          <p className='text-gray-400  text-xs '>{invoice?.client.email} </p>
+          <p className='text-gray-400  text-xs '>{invoice?.client.description}</p>
         </div>
         <div className='w-[50%]'>
           <p className='text-md font-bold '>From</p>
-          <p className='text-gray-400 text-xs'>name</p>
-          <p className='text-gray-400 text-xs'>company name and street </p>
+          <p className='text-gray-400 text-xs'>{invoice?.invoiceFrom}</p>
+          <p className='text-gray-400 text-xs'>{invoice?.invoiceDetails} </p>
         </div>
         </div>
         <table className='w-[94%] mx-auto my-4 border-b rounded-lg border-r border-l border-gray-200'>
@@ -52,18 +56,15 @@ export default function Preview() {
             <th className={`${styleTable.data}`}>price</th>
             <th className={`${styleTable.data}`}>total</th>
           </tr>
-          <tr className=''>
-            <td className={`${styleTable.data}`}>helllow my friends</td>
-            <td className={`${styleTable.data}`} >1</td>
-            <td className={`${styleTable.data}`} >99$</td>
-            <td className={`${styleTable.data}`} >99$</td>
-          </tr>
-          <tr className=''>
-            <td className={`${styleTable.data}`}>helllow my friends</td>
-            <td className={`${styleTable.data}`} >1</td>
-            <td className={`${styleTable.data}`} >99$</td>
-            <td className={`${styleTable.data}`} >99$</td>
-          </tr>
+       
+          {invoice?.items.map((item , index ) => (
+             <tr className='' key={invoice.tax ? invoice.tax : 0 + index}>
+             <td className={`${styleTable.data}`}>{item.description}</td>
+             <td className={`${styleTable.data}`} >{item.quantity}</td>
+             <td className={`${styleTable.data}`} >{item.price}</td>
+             <td className={`${styleTable.data}`} >{item.description}</td>
+           </tr>
+          ))}
         
           
         </table>

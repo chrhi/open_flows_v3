@@ -7,6 +7,8 @@ import Project from '../components/Project'
 import { userReducer } from '@/store'
 import {get_flows} from "@/services/db/flow"
 import {app_statusReducer} from "@/store"
+import { MinProject } from '../components/MinProject'
+import salah from "@/images/salah.jpg"
 
 
 export default function Projects() {
@@ -61,7 +63,12 @@ if(!flows) {
    <PageLayout>
     <PageHeadFlows />
     <SquareLayout>
-  
+      {/* this is a project test */}
+    <MinProject image={salah} />
+    <MinProject image={salah}/>
+    <MinProject image={salah}/>
+    {/* this is the end of the project test */}
+
     {flows && flows?.map((item: any , index: React.Key | null | undefined ) => <Project key={index} title={item.title} type='business' id={item.id}  description={item.brief} image={""} icon_url={item.icon_url} progress ="50%"  />)}
     </SquareLayout>
    </PageLayout>

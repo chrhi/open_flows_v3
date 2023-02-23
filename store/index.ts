@@ -5,6 +5,7 @@ import {userReducer} from "./userReducers/userReducer"
 import {flowPageReducer , CONSTANTS} from "./appReducers/flowPageReducer"
 import {current_selected_flow} from "./appReducers/current_selected_flow"
 import {selected_pdfReducer} from "./appReducers/selected_pdfReducer"
+import {SyncInvoice} from "./invoiceReducer/SyncInvoice"
 
 
 //this will allow us to import all the reducers from one file
@@ -16,6 +17,7 @@ export {
     ,flowPageReducer,
     CONSTANTS,
     current_selected_flow,
-    selected_pdfReducer
+    selected_pdfReducer,
+    SyncInvoice
 
 }
