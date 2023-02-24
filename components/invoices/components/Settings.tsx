@@ -41,6 +41,7 @@ export default function Settings() {
            className="!inline-flex !text-white !font-bold  p-4   !justify-center !rounded-md !border !border-gray-300 !bg-gradient-to-r !from-sky-500 !to-indigo-600 !px-4 !py-2 !text-sm   !shadow-sm !hover:bg-gray-50 !focus:outline-none !focus:ring-2 !focus:ring-indigo-500 focus:ring-offset-2 !focus:ring-offset-gray-100">
            update
      </Button>
+     
         
     </div>
 
