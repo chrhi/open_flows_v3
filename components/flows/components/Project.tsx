@@ -8,10 +8,6 @@ import Row from "@/util/Row"
 import Stack from "@/util/Stack"
 import { style } from "@/static/tailwind"
 
-
-
-
-
 type ProjectType = {
   id:Key | null | undefined ,
   title:string ,
