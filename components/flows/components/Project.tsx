@@ -43,12 +43,11 @@ function Project({title , type , description , progress , image , id , icon_url}
       <Image
         width={60}
         height={60}
-        
-      src={icon_url} alt={"project pic"} />
+        src={icon_url} alt={"project pic"} 
+      />
     </div>
     <div className='w-[60%] h-[50px] flex  p-4 justify-start items-center  '>
       <h1 className='text-gray-900 text-2xl  truncate'>{title}</h1>
-      
     </div>
     </div>
 
