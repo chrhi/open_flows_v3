@@ -6,6 +6,8 @@ import { saveAs } from 'file-saver';
 // this to download file
 //const { data, error } = await supabase.storage.from('avatars').download('public/avatar1.png')
 
+
+//c8dc96e8-a6c8-4b7c-97e3-5e7977f7389f api key
 export const save_document = async (project_id:ID , doc_id :ID , file :any ) => {
     const path:string = project_id + "/" +  doc_id 
     const {data , error} = await supabase.storage
